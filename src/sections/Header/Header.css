@@ -1,0 +1,262 @@
+.header {
+    min-height: 792px;
+    padding-bottom: 17px;
+}
+
+.header__content {
+    width: 100%;
+    height: 691px;
+    background-image: url("/public/images/hero-bg.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    padding: 30px 54px 59px 54px;
+}
+
+.header_up {
+    max-width: 1220px;
+}
+
+.header__title {
+    font-family: "TTTBold";
+    font-size: 76px;
+    color: #D6FF00;
+    line-height: 1.2;
+}
+
+.title_img {
+    vertical-align: middle;
+}
+
+.line {
+    background-color: #D6FF00;
+    max-width: 1210px;
+    height: 2px;
+}
+
+.play-button-container {
+    position: relative;
+    cursor: pointer;
+    width: 126px;
+    height: 126px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 350px;
+    top: 103px;
+}
+
+.play-button {
+    position: absolute;
+    width: 47px;
+    height: 47px;
+    z-index: 2;
+}
+
+.rotating-text {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: rotate 15s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.header__info {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 50px;
+}
+
+.header__desk {
+    display: flex;
+    align-items: center;
+    gap: 21px;
+}
+
+.header__desk-text {
+    color: #FFFCF5;
+    font-family: "Steppe";
+    font-size: 20px;
+}
+
+@media (min-width: 320px) {
+    .header__title {
+        font-size: 22px;
+        width: 100%;
+    }
+
+    .header__desk{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header__desk-text {
+        font-size: 14px;
+    }
+    
+
+    .header__info{
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .header__content{
+        width: 100%;
+        height: 760px;
+        padding: 20px 50px 200px 50px;
+    }
+}
+
+@media (min-width: 400px) {
+    .header__title {
+        font-size: 32px;
+        width: 100%;
+    }
+
+    .header__desk{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .header__info{
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .header__content{
+        width: 100%;
+        height: 760px;
+        padding: 20px 50px 200px 50px;
+    }
+}
+
+@media (min-width: 476px) {
+    .header__title {
+        font-size: 32px;
+        width: 100%;
+    }
+
+    .header__info{
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .header__content{
+        width: 100%;
+        height: 760px;
+        padding: 20px 50px 200px 50px;
+    }
+}
+
+@media (min-width: 576px) {
+    .header__title {
+        font-size: 32px;
+    }
+
+    .header__info{
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .header__content {
+        width: 100%;
+        height: 691px;
+        padding: 30px 54px 59px 54px;
+    }
+}
+
+@media (min-width: 720px) {
+    .header__title {
+        font-size: 32px;
+    }
+    
+    .header__info{
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 768px) {
+    .header__title {
+        font-size: 32px;
+    }
+
+    .header__desk-text {
+        font-size: 18px;
+    }
+
+    .header__info{
+        flex-direction: row;
+        gap: 20px;
+        justify-content: space-between;
+    }
+}
+
+@media (min-width: 992px) {
+    .header__title {
+        font-size: 46px;
+    }
+
+    .header__desk-text {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 1300px) {
+    .play-button-container {
+        left: 250px;
+        top: 140px;
+    }
+}
+
+@media (max-width: 1220px) {
+    .play-button-container {
+        left: 0;
+        top: 140px;
+    }
+}
+
+@media (min-width: 1275px) {
+    .header__title {
+        font-size: 62px;
+    }
+}
+
+@media (min-width: 1431px) {
+    .header__title {
+        font-size: 76px;
+    }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+    .header {
+        min-height: auto;
+        padding-top: 20px;
+    }
+
+    .header__content {
+        min-height: auto;
+    }
+
+    .header__title {
+        font-size: 2rem;
+    }
+}

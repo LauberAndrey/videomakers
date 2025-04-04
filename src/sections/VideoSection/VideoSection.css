@@ -1,0 +1,133 @@
+.video-section {
+    position: relative;
+    padding: 80px 0;
+    /* background-image: url("/public/images/fra.png"); */
+    background-position: center;
+}
+
+.video-section-container {
+    position: relative;
+    z-index: 2;
+}
+
+.video-section-content {
+    position: relative;
+    margin: 0 auto;
+}
+
+.video-section-poster {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+}
+
+.video-section-poster-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.video-section-poster:hover .video-section-poster-image {
+    opacity: 1;
+}
+
+.video-section-play-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 216px;
+    height: 218px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-section-mobile {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 150px;
+}
+
+.video-section-rotating-text {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: video-section-rotate 15s linear infinite;
+}
+
+.video-section-play-icon {
+    position: absolute;
+    width: 47px;
+    height: 47px;
+    z-index: 2;
+}
+
+@keyframes video-section-rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 1440px) {
+    .video-section {
+        padding: 60px 0;
+    }
+}
+
+@media (max-width: 1024px) {
+    .video-section-play-container {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media (max-width: 768px) {
+    .video-section {
+        padding: 40px 0;
+        /* background-image: url("../../images/SCREEN_5-mobile.svg"); */
+    }
+
+    .video-section-play-container {
+        width: 120px;
+        top: 30%;
+        height: 120px;
+    }
+
+    .video-section-play-icon {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-section-play-container {
+        width: 100px;
+        top: 30%;
+        height: 100px;
+    }
+
+    .video-section-rotating-text {
+        animation-duration: 20s;
+    }
+}
+
+@media (max-width: 380px) {
+    .video-section-play-container {
+        width: 100px;
+        top: 20%;
+        height: 100px;
+    }
+
+    .video-section-rotating-text {
+        animation-duration: 20s;
+    }
+}

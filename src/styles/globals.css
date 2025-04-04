@@ -1,0 +1,42 @@
+body {
+    background-color: #000;
+    font-family: "TTTRegular";
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.wrapper-img {
+    background-image: url("/public/images/NOISE.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    padding: 0 56px;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+@media (min-width: 320px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    .header {
+        padding: 0;
+        padding-top: 10px;
+    }
+}
+
+@media (min-width: 676px) {
+    .container {
+        padding: 0 56px;
+    }
+
+    .header {
+        
+        padding-top: 42px;
+    }
+}

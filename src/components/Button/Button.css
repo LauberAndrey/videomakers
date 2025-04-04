@@ -1,0 +1,60 @@
+.btn__container {
+    display: inline-block;
+    position: relative;
+    padding: 4px;
+}
+
+.consult-btn {
+    display: inline-block;
+    padding: 17px 80px;
+    background-color: #D6FF00;
+    color: #030303;
+    font-family: "Steppe";
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    transition: 0.5s ease-in-out;
+}
+
+.btn__container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid #D6FF00;
+    border-radius: 5px;
+    z-index: 1;
+    transform: translate(7px, -7px);
+    transition: 0.5s ease-in-out;
+}
+
+.consult-btn:hover {
+    background-color: #FFFCF5;
+    transform: translate(0px, 0px);
+}
+
+.btn__container:hover::before {
+    background-color: #FFFCF5;
+    transform: translate(0px, 0px);
+    border-color: #FFFCF5;
+}
+
+
+@media (min-width: 768px) {
+    .consult-btn {
+        padding: 17px 50px;
+    }
+}
+
+@media (min-width: 7992px) {
+    .consult-btn {
+        padding: 17px 50px;
+    }
+}

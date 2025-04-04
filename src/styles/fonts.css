@@ -1,0 +1,34 @@
+@font-face {
+    font-family: "TTTRegular";
+    src: url("/public/fonts/TTTravelsNextTrialRegular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "TTTLight";
+    src: url("/public/fonts/TTTravelsNextTrialLight.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "TTTBold";
+    src: url("/public/fonts/TTTravelsNextTrialBold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "TTTMedium";
+    src: url("/public/fonts/TTTravelsNextTrialMedium.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Steppe";
+    src: url("/public/fonts/Steppe.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}

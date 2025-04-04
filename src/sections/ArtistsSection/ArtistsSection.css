@@ -1,0 +1,170 @@
+.artists-wrapper-img {
+    background-image: url("/public/images/NOISE.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding: 80px 0;
+  }
+  
+  .artists-section-bg {
+    background-image: url("/public/images/SCREEN_6.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 166px 0 185px;
+  }
+  
+  .artists-section-title {
+    font-family: "TTTMedium";
+    font-size: 68px;
+    color: #010101;
+    text-align: center;
+    margin-bottom: 70px;
+    padding-top: 166px;
+    position: relative;
+  }
+  
+  .artists-title-icon {
+    vertical-align: middle;
+    margin: 0 15px;
+  }
+  
+  .artists-cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 17px;
+    flex-wrap: wrap;
+    padding-bottom: 190px;
+  }
+  
+  .artist-card {
+    width: 378px;
+    height: 412px;
+    background: #010101;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 60px 38px 0;
+    transition: transform 0.3s ease;
+  }
+  
+  .artist-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .artist-card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .artist-card-title {
+    font-family: "Steppe";
+    font-size: 24px;
+    font-weight: 400;
+    color: #D6FF00;
+    line-height: 1.3;
+    margin-bottom: 30px;
+  }
+  
+  .artist-card-image {
+    width: 100%;
+    height: auto;
+    margin-top: auto;
+    transition: transform 0.3s ease;
+  }
+  
+  .artist-card:hover .artist-card-image {
+    transform: scale(1.05);
+  }
+  
+  @media (max-width: 1440px) {
+    .artists-section-title {
+      font-size: 58px;
+      padding-top: 120px;
+    }
+    
+    .artist-card {
+      width: 350px;
+      height: 380px;
+      padding: 40px 30px 0;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .artists-section-bg {
+      padding: 100px 0 120px;
+    }
+    
+    .artists-section-title {
+      font-size: 48px;
+      padding-top: 80px;
+      margin-bottom: 50px;
+    }
+    
+    .artist-card {
+      width: 300px;
+      height: 330px;
+      padding: 30px 20px 0;
+    }
+    
+    .artist-card-title {
+      font-size: 20px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .artists-wrapper-img {
+      padding: 40px 0;
+    }
+    
+    .artists-section-bg {
+      background-image: url(/public/images/SCREEN_6.svg);
+      padding: 60px 0 80px;
+    }
+    
+    .artists-section-title {
+      font-size: 36px;
+      padding-top: 60px;
+      margin-bottom: 30px;
+    }
+    
+    .artists-title-icon {
+      margin: 0 8px;
+      max-width: 40px;
+    }
+    
+    .artists-cards-container {
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 60px;
+    }
+    
+    .artist-card {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      aspect-ratio: 378/412;
+      padding: 30px 20px 0;
+    }
+    
+    .artists-consult-container {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .artists-section-title {
+      font-size: 28px;
+      padding-top: 40px;
+    }
+    
+    .artist-card-title {
+      font-size: 18px;
+    }
+    
+    .artists-title-icon {
+      max-width: 30px;
+    }
+  }

@@ -1,0 +1,135 @@
+.stars-slider {
+    padding: 80px 0;
+    background-color: #010101;
+    color: #FFFCF5;
+    position: relative;
+}
+
+.stars-slider__swiper {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.stars-slider__slide {
+    width: 378px;
+    height: 540px;
+    background: #030303;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.slide__image-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.slide__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide__content {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: rgba(255, 252, 245, 0.9);
+    color: #010101;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+}
+
+.swiper-slide-active .slide__content {
+    transform: translateY(0);
+    margin: 0 31px 24px 32px;
+    bottom: 0;
+}
+
+.slide__name {
+    font-size: 12px;
+    margin-bottom: 4px;
+    line-height: 1.2;
+    font-family: "TTTBold";
+}
+
+.slide__text {
+    font-size: 12px;
+    line-height: 1.2;
+    font-family: "TTTMedium";
+}
+
+.stars-slider__navigation {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 40px;
+    z-index: 10;
+}
+
+.stars-slider__button-next .btn__container::before{
+    transform: translate(-7px, 7px);
+}
+
+.stars-slider__button-next .btn__container:hover::before {
+    transform: translate(0px, 0px);
+}
+
+.stars-slider__button-prev .btn__container::before{
+    transform: translate(7px, 7px);
+}
+
+.stars-slider__button-prev .btn__container:hover::before {
+    transform: translate(0px, 0px);
+}
+
+.stars-slider__button-prev,
+.stars-slider__button-next {
+    position: static !important;
+    margin: 0 !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+.stars-slider__button-prev::after,
+.stars-slider__button-next::after {
+    display: none !important;
+}
+
+.stars-slider .consult-btn {
+    padding: 12px 30px !important;
+    font-size: 28px !important;
+}
+
+.swiper-pagination {
+    bottom: -40px !important;
+}
+
+.swiper-pagination-bullet {
+    background: #FFFCF5 !important;
+    opacity: 0.5 !important;
+}
+
+.swiper-pagination-bullet-active {
+    background: #D6FF00 !important;
+    opacity: 1 !important;
+}
+
+.stars-slider__slide {
+    cursor: pointer;
+}
+
+.stars-slider__slide:not(.swiper-slide-active) {
+    pointer-events: none;
+    cursor: default;
+} 
+
+.swiper-slide-active {
+    cursor: pointer;
+    pointer-events: auto;
+}
