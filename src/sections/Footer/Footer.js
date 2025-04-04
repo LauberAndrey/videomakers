@@ -28,28 +28,28 @@ const FooterSection = ({ scrollRef }) => {
             
             <div className="footer-right">
               <div className="footer-social">
-                <div className="social-btn-container">
+                <div className="btn__container social-btn-container">
                   <a href="#" className="social-btn">
                     <img src="/images/Telegram App.svg" alt="" className="social-icon" />
                   </a>
                   <div className="social-btn-outline"></div>
                 </div>
                 
-                <div className="social-btn-container">
+                <div className="btn__container social-btn-container">
                   <a href="#" className="social-btn">
                     <img src="/images/WhatsApp.svg" alt="" className="social-icon" />
                   </a>
                   <div className="social-btn-outline"></div>
                 </div>
                 
-                <div className="social-btn-container">
+                <div className="btn__container social-btn-container">
                   <a href="#" className="social-btn">
                     <img src="/images/VKontakte.svg" alt="" className="social-icon" />
                   </a>
                   <div className="social-btn-outline"></div>
                 </div>
                 
-                <div className="social-btn-container">
+                <div className="btn__container social-btn-container">
                   <a href="#" className="social-btn">
                     <img src="/images/social_icon_email.svg" alt="" className="social-icon" />
                   </a>
@@ -64,7 +64,7 @@ const FooterSection = ({ scrollRef }) => {
           </div>
           
           <div className="footer-copyright">
-            <p>2024, Все права защищены</p>
+            <p>2025, Все права защищены</p>
           </div>
         </div>
       </div>

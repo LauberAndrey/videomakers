@@ -1,5 +1,5 @@
 .footer-bg {
-  background-image: url("/public/images/footer_bg.png");
+  background-image: url("/public/images/FOOTER.svg");
   background-repeat: no-repeat;
   background-size: cover;
   padding: 200px 0;
@@ -38,6 +38,7 @@
 
 .footer-social {
   display: flex;
+  justify-content: end;
   gap: 22px;
   margin-bottom: 26px;
 }
@@ -62,19 +63,9 @@
   width: 33px;
   height: 33px;
   transition: transform 0.3s ease;
+  z-index: 20;
 }
 
-.social-btn-outline {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 1px solid #D6FF00;
-  border-radius: 5px;
-  transform: translate(7px, -7px);
-  transition: all 0.3s ease;
-}
 
 .btn__container.footer-btn-container {
   margin: 0;

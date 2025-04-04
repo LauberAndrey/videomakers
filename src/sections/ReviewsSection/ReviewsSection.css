@@ -62,7 +62,7 @@
 
 .client-review-card-small {
     width: 207px;
-    height: 207px;
+    height: 257px;
     padding: 30px 24px 63px 26px;
 }
 
@@ -80,14 +80,14 @@
 
 .client-review-name {
     font-family: "TTTMedium";
-    font-size: 14px;
+    font-size: 18px;
     color: #060606;
     margin-bottom: 10px;
 }
 
 .client-review-text {
     font-family: "Steppe";
-    font-size: 10px;
+    font-size: 14px;
     font-weight: 400;
     color: #060606;
     flex-grow: 1;

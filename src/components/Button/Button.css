@@ -53,8 +53,8 @@
     }
 }
 
-@media (min-width: 7992px) {
+@media (min-width: 1310px) {
     .consult-btn {
-        padding: 17px 50px;
+        padding: 17px 80px;
     }
 }
