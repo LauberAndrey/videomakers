@@ -6,7 +6,7 @@ COPY package.json ./
 
 RUN npm install
 
-COPY ../../Новая%20папка ./
+COPY . ./
 
 RUN npm run build
 
