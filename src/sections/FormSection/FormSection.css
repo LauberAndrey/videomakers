@@ -63,6 +63,10 @@
   resize: vertical;
 }
 
+.form-input[type="tel"] {
+  caret-color: #010101;
+}
+
 .btn__container.form-btn-container {
   margin-top: 30px;
   position: relative;

@@ -3,16 +3,27 @@ import './VideoPopup.css'
 
 const VideoPopup = ({ videoSrc, onClose }) => {
   const videoRef = useRef(null)
+  const progressContainerRef = useRef(null)
+  const volumeContainerRef = useRef(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [progress, setProgress] = useState(0)
   const [timeDisplay, setTimeDisplay] = useState('00:00 / 00:00')
   const [isFullscreen, setIsFullscreen] = useState(false)
+  const [isDragging, setIsDragging] = useState(false)
+  const [volume, setVolume] = useState(1)
+  const [isMuted, setIsMuted] = useState(false)
+  const [isVolumeDragging, setIsVolumeDragging] = useState(false)
 
   useEffect(() => {
     const video = videoRef.current
+    const progressContainer = progressContainerRef.current
+    const volumeContainer = volumeContainerRef.current
+
+    // Установка начальной громкости
+    video.volume = volume
 
     const handleTimeUpdate = () => {
-      if (video.duration) {
+      if (video.duration && !isDragging) {
         const percent = (video.currentTime / video.duration) * 100
         setProgress(percent)
         setTimeDisplay(
@@ -29,16 +40,42 @@ const VideoPopup = ({ videoSrc, onClose }) => {
       setIsFullscreen(!!document.fullscreenElement)
     }
 
+    const handleMouseMove = (e) => {
+      if (isDragging) {
+        handleProgress(e)
+      }
+      if (isVolumeDragging) {
+        handleVolumeChange(e)
+      }
+    }
+
+    const handleMouseUp = () => {
+      setIsDragging(false)
+      setIsVolumeDragging(false)
+    }
+
     video.addEventListener('timeupdate', handleTimeUpdate)
     video.addEventListener('loadedmetadata', handleLoadedMetadata)
+    video.addEventListener('play', () => setIsPlaying(true))
+    video.addEventListener('pause', () => setIsPlaying(false))
     document.addEventListener('fullscreenchange', handleFullscreenChange)
+    document.addEventListener('mousemove', handleMouseMove)
+    document.addEventListener('mouseup', handleMouseUp)
+    document.addEventListener('touchmove', handleTouchMove)
+    document.addEventListener('touchend', handleMouseUp)
 
     return () => {
       video.removeEventListener('timeupdate', handleTimeUpdate)
       video.removeEventListener('loadedmetadata', handleLoadedMetadata)
+      video.removeEventListener('play', () => setIsPlaying(true))
+      video.removeEventListener('pause', () => setIsPlaying(false))
       document.removeEventListener('fullscreenchange', handleFullscreenChange)
+      document.removeEventListener('mousemove', handleMouseMove)
+      document.removeEventListener('mouseup', handleMouseUp)
+      document.removeEventListener('touchmove', handleTouchMove)
+      document.removeEventListener('touchend', handleMouseUp)
     }
-  }, [])
+  }, [isDragging, isVolumeDragging, volume])
 
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60)
@@ -49,32 +86,105 @@ const VideoPopup = ({ videoSrc, onClose }) => {
   const togglePlay = () => {
     if (videoRef.current.paused) {
       videoRef.current.play()
-      setIsPlaying(true)
     } else {
       videoRef.current.pause()
-      setIsPlaying(false)
     }
   }
 
+  const handleProgress = (e) => {
+    const rect = progressContainerRef.current.getBoundingClientRect()
+    let pos = 0
+    
+    if (e.type.includes('touch')) {
+      const touch = e.touches[0] || e.changedTouches[0]
+      pos = (touch.clientX - rect.left) / rect.width
+    } else {
+      pos = (e.clientX - rect.left) / rect.width
+    }
+    
+    pos = Math.max(0, Math.min(1, pos))
+    const duration = videoRef.current.duration || 1
+    videoRef.current.currentTime = pos * duration
+    setProgress(pos * 100)
+    setTimeDisplay(
+      `${formatTime(pos * duration)} / ${formatTime(duration)}`
+    )
+  }
+
+  const handleVolumeChange = (e) => {
+    const rect = volumeContainerRef.current.getBoundingClientRect()
+    let pos = 0
+    
+    if (e.type.includes('touch')) {
+      const touch = e.touches[0] || e.changedTouches[0]
+      pos = (touch.clientX - rect.left) / rect.width
+    } else {
+      pos = (e.clientX - rect.left) / rect.width
+    }
+    
+    pos = Math.max(0, Math.min(1, pos))
+    const newVolume = pos
+    setVolume(newVolume)
+    videoRef.current.volume = newVolume
+    setIsMuted(newVolume === 0)
+  }
+
+  const toggleMute = () => {
+    if (isMuted) {
+      videoRef.current.volume = volume > 0 ? volume : 0.5
+      setVolume(volume > 0 ? volume : 0.5)
+      setIsMuted(false)
+    } else {
+      videoRef.current.volume = 0
+      setIsMuted(true)
+    }
+  }
+
+  const handleTouchMove = (e) => {
+    if (isDragging) {
+      handleProgress(e)
+    }
+    if (isVolumeDragging) {
+      handleVolumeChange(e)
+    }
+  }
+
+  const handleProgressMouseDown = () => {
+    setIsDragging(true)
+  }
+
+  const handleVolumeMouseDown = () => {
+    setIsVolumeDragging(true)
+  }
+
   const handleProgressClick = (e) => {
-    const rect = e.target.getBoundingClientRect()
-    const pos = (e.clientX - rect.left) / rect.width
-    videoRef.current.currentTime = pos * videoRef.current.duration
+    handleProgress(e)
+  }
+
+  const handleVolumeClick = (e) => {
+    handleVolumeChange(e)
   }
 
   const toggleFullscreen = () => {
+    const element = videoRef.current.parentElement
+    
     if (!document.fullscreenElement) {
-      const element = videoRef.current.parentElement
       if (element.requestFullscreen) {
         element.requestFullscreen()
-      } else if (element.webkitRequestFullscreen) { 
+      } else if (element.webkitRequestFullscreen) {
         element.webkitRequestFullscreen()
+      } else if (element.webkitEnterFullscreen) {
+        element.webkitEnterFullscreen()
+      } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen()
       }
     } else {
       if (document.exitFullscreen) {
         document.exitFullscreen()
-      } else if (document.webkitExitFullscreen) { 
+      } else if (document.webkitExitFullscreen) {
         document.webkitExitFullscreen()
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen()
       }
     }
   }
@@ -98,15 +208,42 @@ const VideoPopup = ({ videoSrc, onClose }) => {
               {isPlaying ? '❚❚' : '▶'}
             </button>
             <div
+              ref={progressContainerRef}
               className="progress-bar-container"
               onClick={handleProgressClick}
+              onMouseDown={handleProgressMouseDown}
+              onTouchStart={handleProgressMouseDown}
             >
               <div
                 className="progress-bar"
                 style={{ width: `${progress}%` }}
-              ></div>
+              >
+                <div className="progress-thumb" />
+              </div>
             </div>
             <div className="time-display">{timeDisplay}</div>
+            
+            {/* Регулятор громкости */}
+            <div className="volume-control">
+              <button className="volume-btn" onClick={toggleMute}>
+                {isMuted || volume === 0 ? '🔇' : volume > 0.5 ? '🔊' : '🔉'}
+              </button>
+              <div
+                ref={volumeContainerRef}
+                className="volume-bar-container"
+                onClick={handleVolumeClick}
+                onMouseDown={handleVolumeMouseDown}
+                onTouchStart={handleVolumeMouseDown}
+              >
+                <div
+                  className="volume-bar"
+                  style={{ width: `${isMuted ? 0 : volume * 100}%` }}
+                >
+                  <div className="volume-thumb" />
+                </div>
+              </div>
+            </div>
+            
             <button className="fullscreen-btn" onClick={toggleFullscreen}>
               {isFullscreen ? '⤡' : '⤢'}
             </button>

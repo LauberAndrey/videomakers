@@ -138,11 +138,6 @@ const ReviewsSection = () => {
 															{review.name}
 														</h3>
 														<p className='client-review-text'>{review.text}</p>
-														<img
-															src='/images/arrow.svg'
-															alt=''
-															className='client-review-arrow'
-														/>
 													</div>
 												</div>
 											</div>
@@ -202,11 +197,6 @@ const ReviewsSection = () => {
 																<p className='client-review-text'>
 																	{review.text}
 																</p>
-																<img
-																	src='/images/arrow.svg'
-																	alt=''
-																	className='client-review-arrow'
-																/>
 															</div>
 														</div>
 													</div>

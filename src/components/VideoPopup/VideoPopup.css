@@ -80,12 +80,32 @@
     background: rgba(255, 255, 255, 0.3);
     border-radius: 2px;
     cursor: pointer;
+    position: relative;
 }
 
 .progress-bar {
     height: 100%;
     background: #D6FF00;
     border-radius: 2px;
+    position: relative;
+}
+
+.progress-thumb {
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background: #D6FF00;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.progress-bar-container:hover .progress-thumb,
+.progress-bar-container:active .progress-thumb {
+    opacity: 1;
 }
 
 .time-display {
@@ -142,5 +162,74 @@
         right: 10px;
         color: #888;
         font-size: 30px;
+    }
+}
+
+/* Все предыдущие стили остаются такими же, добавляем только новые */
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 10px;
+}
+
+.volume-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.volume-bar-container {
+    width: 60px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+}
+
+.volume-bar {
+    height: 100%;
+    background: #D6FF00;
+    border-radius: 2px;
+    position: relative;
+}
+
+.volume-thumb {
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background: #D6FF00;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.volume-bar-container:hover .volume-thumb,
+.volume-bar-container:active .volume-thumb {
+    opacity: 1;
+}
+
+/* Адаптивные стили для мобильных устройств */
+@media (max-width: 768px) {
+    .volume-bar-container {
+        width: 40px;
+    }
+
+    .volume-btn {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .volume-bar-container {
+        width: 30px;
     }
 }
