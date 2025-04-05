@@ -43,8 +43,7 @@ const Header = ({ scrollRef }) => {
           <div className="header__content">
             <div className="header_up">
               <h2 className="header__title">
-                Мы снимаем клипы, 
-                <img className="title_img" src="/images/money-icon.svg" alt="" />
+                Мы снимаем клипы, <img className="title_img" src="/images/money-icon.svg" alt="" />
                 
                 которые
                 <img className="title_img" src="/images/shapetextheader.svg" alt="" />

@@ -47,7 +47,7 @@
 }
 
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     .consult-btn {
         padding: 17px 50px;
     }

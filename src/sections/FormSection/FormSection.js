@@ -28,7 +28,7 @@ const FormSection = forwardRef((props, ref) => {
               <div className="form-row">
                 <label className="input-label">
                   <input
-                    type="tel"
+                    type="text"
                     className="form-input"
                     placeholder="Контактный номер"
                     pattern="\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}"

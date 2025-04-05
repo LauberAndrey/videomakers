@@ -37,9 +37,9 @@ const StarsSlider = () => {
 		},
         {
 			id: 4,
-			image: 'images/image91.svg',
+			image: 'images/image97.svg',
 			videoSrc: '/video/Циркус.mp4',
-			name: 'РИКЕДА',
+			name: 'Циркус',
 			text: 'Реализовали сложный проект со скрытыми смыслами за крайне низкий для такого артиста бюджет',
 		},
         {

@@ -1,20 +1,12 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { FreeMode, Mousewheel } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/free-mode'
 import './ReviewsSection.css'
 
 const ReviewsSection = () => {
-	const trackRef = useRef(null)
-	const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-	const [currentIndex, setCurrentIndex] = useState(0)
-
-	let isDragging = false
-	let startPos = 0
-	let currentTranslate = 0
-	let prevTranslate = 0
-	let velocity = 0
-	let lastTime = 0
-	let lastPos = 0
-	let animationFrameId = null
-
+	const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
 	const reviews = [
 		{
 			id: 1,
@@ -78,183 +70,158 @@ const ReviewsSection = () => {
 		},
 	]
 
-	const getSlideWidth = () => {
-		if (!trackRef.current) return 0
-		return windowWidth < 768
-			? trackRef.current.offsetWidth * 0.9 + 17
-			: 207 + 17
-	}
-
-	const snapToSlide = (targetIndex) => {
-		const maxIndex = Math.floor(
-			(trackRef.current.scrollWidth - trackRef.current.offsetWidth) /
-				getSlideWidth()
-		)
-		const clampedIndex = Math.max(0, Math.min(targetIndex, maxIndex))
-
-		const targetPosition = -clampedIndex * getSlideWidth()
-		const startPosition = currentTranslate
-		const distance = targetPosition - startPosition
-		const startTime = performance.now()
-
-		const animate = (time) => {
-			const elapsed = time - startTime
-			const progress = Math.min(elapsed / 600, 1)
-			const easedProgress = 0.5 * (1 - Math.cos(Math.PI * progress))
-
-			trackRef.current.style.transform = `translateX(${
-				startPosition + distance * easedProgress
-			}px)`
-
-			if (progress < 1) {
-				animationFrameId = requestAnimationFrame(animate)
-			} else {
-				setCurrentIndex(clampedIndex)
-				prevTranslate = targetPosition
-				currentTranslate = targetPosition
-			}
-		}
-
-		cancelAnimationFrame(animationFrameId)
-		animationFrameId = requestAnimationFrame(animate)
-	}
-
 	useEffect(() => {
-		const track = trackRef.current
-
-		const handleResize = () => {
-			setWindowWidth(window.innerWidth)
-			snapToSlide(currentIndex)
-		}
-
-		const getPositionX = (e) => (e.touches ? e.touches[0].clientX : e.clientX)
-
-		const dragStart = (e) => {
-			isDragging = true
-			startPos = getPositionX(e)
-			track.classList.add('grabbing')
-			lastPos = startPos
-			lastTime = performance.now()
-			velocity = 0
-			track.style.transition = 'none'
-			cancelAnimationFrame(animationFrameId)
-		}
-
-		const drag = (e) => {
-			if (!isDragging) return
-			const currentPos = getPositionX(e)
-			const now = performance.now()
-			const deltaTime = now - lastTime
-
-			if (deltaTime > 0) {
-				velocity = (currentPos - lastPos) / deltaTime
-				lastPos = currentPos
-				lastTime = now
-			}
-
-			const diff = (currentPos - startPos) * 0.6
-			currentTranslate = prevTranslate + diff
-			track.style.transform = `translateX(${currentTranslate}px)`
-		}
-
-		const dragEnd = () => {
-			if (!isDragging) return
-			isDragging = false
-			track.classList.remove('grabbing')
-
-			const velocityThreshold = 0.3
-			const moveThreshold = getSlideWidth() * 0.2
-
-			let targetIndex = currentIndex
-
-			if (Math.abs(velocity) > velocityThreshold) {
-				targetIndex += velocity > 0 ? -1 : 1
-			} else if (Math.abs(currentTranslate - prevTranslate) > moveThreshold) {
-				targetIndex += currentTranslate < prevTranslate ? 1 : -1
-			}
-
-			snapToSlide(targetIndex)
-		}
-
+		const handleResize = () => setIsMobile(window.innerWidth < 768)
 		window.addEventListener('resize', handleResize)
-		track.addEventListener('mousedown', dragStart)
-		track.addEventListener('mousemove', drag)
-		track.addEventListener('mouseup', dragEnd)
-		track.addEventListener('mouseleave', dragEnd)
-		track.addEventListener('touchstart', dragStart)
-		track.addEventListener('touchmove', drag)
-		track.addEventListener('touchend', dragEnd)
+		return () => window.removeEventListener('resize', handleResize)
+	}, [])
 
-		return () => {
-			window.removeEventListener('resize', handleResize)
-			track.removeEventListener('mousedown', dragStart)
-			track.removeEventListener('mousemove', drag)
-			track.removeEventListener('mouseup', dragEnd)
-			track.removeEventListener('mouseleave', dragEnd)
-			track.removeEventListener('touchstart', dragStart)
-			track.removeEventListener('touchmove', drag)
-			track.removeEventListener('touchend', dragEnd)
-			cancelAnimationFrame(animationFrameId)
+	const groupReviews = () => {
+		const groups = []
+		for (let i = 0; i < reviews.length; i += 5) {
+			const group = [
+				reviews[i],
+				reviews[i + 1],
+				reviews[i + 2],
+				reviews[i + 3],
+				reviews[i + 4],
+			].filter(Boolean)
+			groups.push(group)
 		}
-	}, [currentIndex, windowWidth])
+		return groups
+	}
 
 	return (
 		<section className='wrapper-img client-reviews-section'>
-			<div className='client-reviews__bg'>
-				<div className='container'>
-					<h2 className='client-reviews__title'>
-						Что говорят
-						<img
-							className='title_img'
+			<div className='client-reviews-bg'>
+				<div className='client-reviews-container'>
+					<h2 className='client-reviews-title'>
+						Что говорят <img
+							className='client-reviews-title-img'
 							src='/images/shape__reviews.svg'
 							alt=''
-						/>
-						наши клиенты
+						/> наши клиенты
 					</h2>
 
 					<div className='client-reviews-slider'>
-						<div
-							className='client-reviews-slides client-reviews-track'
-							ref={trackRef}
+						<Swiper
+							modules={[FreeMode, Mousewheel]}
+							spaceBetween={17}
+							slidesPerView='auto'
+							freeMode={{
+								enabled: true,
+								sticky: true,
+								momentumBounce: false,
+							}}
+							mousewheel={{ forceToAxis: true }}
+							className='client-reviews-track'
+							resistanceRatio={0}
 						>
-							{reviews.map((review) => (
-								<div
-									key={review.id}
-									className={`client-review-card-wrapper ${
-										[4, 5, 10, 11].includes(review.id) ? 'card-flex-end' : ''
-									}`}
-								>
-									<div className='client-review-number'>
-										{review.id.toString().padStart(2, '0')}
-									</div>
-									<div
-										className={`client-review-card ${
-											[3, 6, 9, 12].includes(review.id)
-												? 'client-review-card-large'
-												: 'client-review-card-small'
-										}`}
-									>
-										<div className='client-review-content'>
-											<h3 className='client-review-name'>{review.name}</h3>
-											<p className='client-review-text'>{review.text}</p>
-											{[3, 6, 9, 12].includes(review.id) ? (
-												<strong className='client-review-symbol'>///</strong>
-											) : (
-												<img
-													src='/images/arrow.svg'
-													alt=''
-													className='client-review-arrow'
-												/>
-											)}
-										</div>
-									</div>
-								</div>
+							{groupReviews().map((group, groupIndex) => (
+								<React.Fragment key={groupIndex}>
+									{/* Первые две маленькие карточки */}
+									{group.slice(0, 2).map((review) => (
+										<SwiperSlide
+											key={review.id}
+											style={{
+												width: isMobile ? '90%' : 207,
+												marginRight: '17px',
+											}}
+										>
+											<div className='client-review-card-wrapper'>
+												<div className='client-review-number'>
+													{review.id.toString().padStart(2, '0')}
+												</div>
+												<div className='client-review-card client-review-card-small'>
+													<div className='client-review-content'>
+														<h3 className='client-review-name'>
+															{review.name}
+														</h3>
+														<p className='client-review-text'>{review.text}</p>
+														<img
+															src='/images/arrow.svg'
+															alt=''
+															className='client-review-arrow'
+														/>
+													</div>
+												</div>
+											</div>
+										</SwiperSlide>
+									))}
+
+									{/* Большая карточка */}
+									{group[2] && (
+										<SwiperSlide
+											key={group[2].id}
+											style={{
+												width: isMobile ? '90%' : 321,
+												marginRight: '17px',
+											}}
+										>
+											<div className='client-review-card-wrapper'>
+												<div className='client-review-number'>
+													{group[2].id.toString().padStart(2, '0')}
+												</div>
+												<div className='client-review-card client-review-card-large'>
+													<div className='client-review-content'>
+														<h3 className='client-review-name'>
+															{group[2].name}
+														</h3>
+														<p className='client-review-text'>
+															{group[2].text}
+														</p>
+														<strong className='client-review-symbol'>
+															///
+														</strong>
+													</div>
+												</div>
+											</div>
+										</SwiperSlide>
+									)}
+
+									{/* Последние две маленькие */}
+									{group.slice(3, 5).map(
+										(review) =>
+											review && (
+												<SwiperSlide
+													key={review.id}
+													style={{
+														width: isMobile ? '90%' : 207,
+														marginRight: '17px',
+													}}
+												>
+													<div className='client-review-card-wrapper card-flex-end'>
+														<div className='client-review-number'>
+															{review.id.toString().padStart(2, '0')}
+														</div>
+														<div className='client-review-card client-review-card-small'>
+															<div className='client-review-content'>
+																<h3 className='client-review-name'>
+																	{review.name}
+																</h3>
+																<p className='client-review-text'>
+																	{review.text}
+																</p>
+																<img
+																	src='/images/arrow.svg'
+																	alt=''
+																	className='client-review-arrow'
+																/>
+															</div>
+														</div>
+													</div>
+												</SwiperSlide>
+											)
+									)}
+								</React.Fragment>
 							))}
-						</div>
+						</Swiper>
 					</div>
 
-					{windowWidth < 768 && (
-						<div className='mobile-scroll-indicator'>← Прокрутите вбок →</div>
+					{isMobile && (
+						<div className='client-reviews-mobile-scroll'>
+							← Прокрутите вбок →
+						</div>
 					)}
 				</div>
 			</div>
