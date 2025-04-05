@@ -118,7 +118,7 @@ const StarsSlider = () => {
                     slidesPerView={'auto'}
                     loop={true}
                     initialSlide={2}
-                    onSlideChange={(swiper) => setActiveSlideIndex(swiper.activeIndex)}
+                    onSlideChange={(swiper) => setActiveSlideIndex(swiper.realIndex)}
                     coverflowEffect={{
                         rotate: 20,
                         stretch: -30,
