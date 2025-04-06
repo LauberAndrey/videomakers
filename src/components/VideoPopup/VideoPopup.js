@@ -3,6 +3,7 @@ import './VideoPopup.css'
 
 const VideoPopup = ({ videoSrc, onClose }) => {
   const videoRef = useRef(null)
+  const popupContentRef = useRef(null)
   const progressContainerRef = useRef(null)
   const volumeContainerRef = useRef(null)
   const [isPlaying, setIsPlaying] = useState(false)
@@ -37,7 +38,8 @@ const VideoPopup = ({ videoSrc, onClose }) => {
     }
 
     const handleFullscreenChange = () => {
-      setIsFullscreen(!!document.fullscreenElement || !!video.webkitDisplayingFullscreen)
+      const fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement
+      setIsFullscreen(!!fullscreenElement)
     }
 
     const handleMouseMove = (e) => {
@@ -63,41 +65,30 @@ const VideoPopup = ({ videoSrc, onClose }) => {
       }
     }
 
-    const handleOrientationChange = () => {
-      if (isFullscreen) {
-        video.style.width = '100%'
-        video.style.height = '100%'
-      }
-    }
-
     video.addEventListener('timeupdate', handleTimeUpdate)
     video.addEventListener('loadedmetadata', handleLoadedMetadata)
     video.addEventListener('play', () => setIsPlaying(true))
     video.addEventListener('pause', () => setIsPlaying(false))
-    video.addEventListener('webkitbeginfullscreen', () => setIsFullscreen(true))
-    video.addEventListener('webkitendfullscreen', () => setIsFullscreen(false))
     document.addEventListener('fullscreenchange', handleFullscreenChange)
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange)
     document.addEventListener('mousemove', handleMouseMove)
     document.addEventListener('mouseup', handleMouseUp)
     document.addEventListener('touchmove', handleTouchMove)
     document.addEventListener('touchend', handleMouseUp)
-    window.addEventListener('orientationchange', handleOrientationChange)
 
     return () => {
       video.removeEventListener('timeupdate', handleTimeUpdate)
       video.removeEventListener('loadedmetadata', handleLoadedMetadata)
       video.removeEventListener('play', () => setIsPlaying(true))
       video.removeEventListener('pause', () => setIsPlaying(false))
-      video.removeEventListener('webkitbeginfullscreen', () => setIsFullscreen(true))
-      video.removeEventListener('webkitendfullscreen', () => setIsFullscreen(false))
       document.removeEventListener('fullscreenchange', handleFullscreenChange)
+      document.removeEventListener('webkitfullscreenchange', handleFullscreenChange)
       document.removeEventListener('mousemove', handleMouseMove)
       document.removeEventListener('mouseup', handleMouseUp)
       document.removeEventListener('touchmove', handleTouchMove)
       document.removeEventListener('touchend', handleMouseUp)
-      window.removeEventListener('orientationchange', handleOrientationChange)
     }
-  }, [isDragging, isVolumeDragging, volume, isFullscreen])
+  }, [isDragging, isVolumeDragging, volume])
 
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60)
@@ -178,26 +169,35 @@ const VideoPopup = ({ videoSrc, onClose }) => {
     handleVolumeChange(e)
   }
 
-  const toggleFullscreen = () => {
-    const videoElement = videoRef.current
+  const toggleFullscreen = async () => {
+    const element = popupContentRef.current
     
-    // Для iOS используем метод видео элемента
-    if (videoElement.webkitEnterFullscreen) {
-      videoElement.webkitEnterFullscreen()
-    } else if (!document.fullscreenElement) {
-      videoElement.parentElement.requestFullscreen()
-        .then(() => setIsFullscreen(true))
-        .catch(err => console.error('Error attempting to enable fullscreen:', err))
-    } else {
-      document.exitFullscreen()
-        .then(() => setIsFullscreen(false))
-        .catch(err => console.error('Error attempting to exit fullscreen:', err))
+    try {
+      if (!isFullscreen) {
+        if (element.requestFullscreen) {
+          await element.requestFullscreen()
+        } else if (element.webkitRequestFullscreen) {
+          await element.webkitRequestFullscreen()
+        } else if (videoRef.current.webkitEnterFullscreen) {
+          videoRef.current.webkitEnterFullscreen()
+        }
+      } else {
+        if (document.exitFullscreen) {
+          await document.exitFullscreen()
+        } else if (document.webkitExitFullscreen) {
+          await document.webkitExitFullscreen()
+        } else if (videoRef.current.webkitExitFullscreen) {
+          videoRef.current.webkitExitFullscreen()
+        }
+      }
+    } catch (err) {
+      console.error('Error attempting to toggle fullscreen:', err)
     }
   }
 
   return (
     <div className={`popup-overlay ${isFullscreen ? 'fullscreen' : ''}`} onClick={onClose}>
-      <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+      <div className="popup-content" ref={popupContentRef} onClick={(e) => e.stopPropagation()}>
         <span className="close-btn" onClick={onClose}>
           &times;
         </span>
