@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Footer.css';
 
 const FooterSection = ({ scrollRef }) => {
+  const [isTouchDevice] = useState('ontouchstart' in window || navigator.maxTouchPoints > 0);
+
   const scrollToForm = () => {
     if (scrollRef?.current) {
       scrollRef.current.scrollIntoView({
@@ -10,6 +12,17 @@ const FooterSection = ({ scrollRef }) => {
         inline: 'nearest'
       });
     }
+  };
+
+  const handleButtonPress = (e) => {
+    if (!isTouchDevice) return;
+    
+    const btnContainer = e.currentTarget;
+    btnContainer.classList.add('active');
+    
+    setTimeout(() => {
+      btnContainer.classList.remove('active');
+    }, 300);
   };
 
   return (
@@ -28,28 +41,28 @@ const FooterSection = ({ scrollRef }) => {
             
             <div className="footer-right">
               <div className="footer-social">
-                <div className="btn__container social-btn-container">
+                <div className="btn__container social-btn-container" onTouchStart={handleButtonPress}>
                   <a href="#" className="social-btn">
                     <img src="/images/Telegram App.svg" alt="" className="social-icon" />
                   </a>
                   <div className="social-btn-outline"></div>
                 </div>
                 
-                <div className="btn__container social-btn-container">
+                <div className="btn__container social-btn-container" onTouchStart={handleButtonPress}>
                   <a href="#" className="social-btn">
                     <img src="/images/WhatsApp.svg" alt="" className="social-icon" />
                   </a>
                   <div className="social-btn-outline"></div>
                 </div>
                 
-                <div className="btn__container social-btn-container">
+                <div className="btn__container social-btn-container" onTouchStart={handleButtonPress}>
                   <a href="#" className="social-btn">
                     <img src="/images/VKontakte.svg" alt="" className="social-icon" />
                   </a>
                   <div className="social-btn-outline"></div>
                 </div>
                 
-                <div className="btn__container social-btn-container">
+                <div className="btn__container social-btn-container" onTouchStart={handleButtonPress}>
                   <a href="#" className="social-btn">
                     <img src="/images/social_icon_email.svg" alt="" className="social-icon" />
                   </a>
@@ -57,7 +70,7 @@ const FooterSection = ({ scrollRef }) => {
                 </div>
               </div>
               
-              <div className="btn__container footer-btn-container">
+              <div className="btn__container footer-btn-container" onTouchStart={handleButtonPress}>
                 <button onClick={scrollToForm} className="consult-btn footer-btn">Получить консультацию</button>
               </div>
             </div>

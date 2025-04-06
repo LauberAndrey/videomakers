@@ -18,7 +18,7 @@
     cursor: pointer;
     position: relative;
     z-index: 2;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out;
 }
 
 .btn__container::before {
@@ -32,7 +32,7 @@
     border-radius: 5px;
     z-index: 1;
     transform: translate(7px, -7px);
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out;
 }
 
 /* Только для устройств с hover */
@@ -59,15 +59,25 @@
     border-color: #FFFCF5 !important;
 }
 
+.btn__container.active .social-btn {
+    background-color: #FFFCF5;
+    transform: translate(0px, 0px);
+}
+
+.btn__container.active::before {
+    transform: translate(0px, 0px) !important;
+    border-color: #FFFCF5 !important;
+}
+
 @media (max-width: 768px) {
     .consult-btn {
         padding: 17px 50px;
     }
     
     /* Отключаем трансформации для мобильных */
-    .btn__container::before {
+    /* .btn__container::before {
         transform: translate(0px, 0px);
-    }
+    } */
     
     .consult-btn {
         transform: translate(0px, 0px) !important;

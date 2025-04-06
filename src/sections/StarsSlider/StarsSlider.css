@@ -39,7 +39,7 @@
     background: rgba(255, 252, 245, 0.9);
     color: #010101;
     transform: translateY(100%);
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
     border-radius: 10px;
 }
 
@@ -74,7 +74,7 @@
 
 .stars-slider__button-next .btn__container::before {
     transform: translate(-7px, 7px);
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
 }
 
 .stars-slider__button-next .btn__container.active::before {
@@ -83,7 +83,7 @@
 
 .stars-slider__button-prev .btn__container::before {
     transform: translate(7px, 7px);
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
 }
 
 .stars-slider__button-prev,
@@ -139,7 +139,7 @@
 .stars-slider__slide .slide__play-button {
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.5s ease;
 }
 
 /* Показываем только на активном слайде */
@@ -162,7 +162,7 @@
 .stars-section-play-icon {
     width: 80px;
     height: 80px;
-    transition: all 0.3s ease;
+    transition: all 0.5s ease;
 }
 
 
@@ -177,7 +177,7 @@
 .stars-slider__slide.swiper-slide-active .slide__play-button {
     opacity: 1;
     visibility: visible;
-    transition: opacity 0.3s ease, filter 0.3s ease;
+    transition: opacity 0.5s ease, filter 0.5s ease;
 }
 
 /* Для десктопных устройств */
@@ -191,10 +191,10 @@
 /* Для мобильных устройств */
 .stars-slider__navigation .btn__container.active::before {
     transform: translate(0px, 0px) !important;
-    transition: transform 0.15s ease !important;
+    transition: transform 0.5s ease !important;
 }
 
 .stars-slider__button-next .btn__container::before,
 .stars-slider__button-prev .btn__container::before {
-    transition: transform 0.3s ease, opacity 0.15s ease !important;
+    transition: transform 0.5s ease, opacity 0.5s ease !important;
 }

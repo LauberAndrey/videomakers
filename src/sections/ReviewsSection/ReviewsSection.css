@@ -1,7 +1,7 @@
 /* ReviewsSection.css */
 
 .client-reviews-section {
-    padding: 100px 0;
+    padding-top: 100px ;
     position: relative;
     overflow: hidden;
 }
@@ -154,7 +154,7 @@
 
 @media (max-width: 1200px) {
     .client-reviews-bg {
-        padding: 100px 0 120px;
+        padding: 100px 0 0;
     }
 
     .client-reviews-title {
@@ -224,7 +224,7 @@
     }
     
     .client-reviews-bg {
-        padding: 60px 0 80px;
+        /* padding: 60px 0 80px; */
         height: auto;
         min-height: 90vh;
     }

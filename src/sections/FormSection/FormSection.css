@@ -86,7 +86,7 @@
   border: 1px solid #010101;
   border-radius: 5px;
   transform: translate(7px, -7px);
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out-in-out;
   width: 700px;
   max-width: 100%;
 }
@@ -102,7 +102,7 @@
   cursor: pointer;
   position: relative;
   z-index: 2;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out-in-out;
   width: 700px;
   max-width: 100%;
 }
@@ -203,7 +203,7 @@
 
 @media (max-width: 768px) {
   .discuss-form-section {
-    padding: 60px 0;
+    padding: 0 0 60px 0;
   }
 
   .discussc-ontainer {
@@ -239,4 +239,66 @@
   .btn__container.form-btn-container::before {
     transform: translate(4px, -4px);
   }
+}
+
+/* Базовые стили кнопки */
+.btn__container.form-btn-container {
+  position: relative;
+  display: inline-block;
+  padding: 4px;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn__container.form-btn-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid #010101;
+  border-radius: 5px;
+  transform: translate(7px, -7px);
+  transition: transform 0.5s ease-in-out;
+}
+
+.consult-btn.form-submit-btn {
+  position: relative;
+  z-index: 2;
+  background-color: #010101;
+  color: #FFFCF5;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Ховер-эффекты для десктопа */
+@media (hover: hover) {
+  .btn__container.form-btn-container:hover::before {
+    transform: translate(0, 0);
+    border-color: #FFFCF5;
+  }
+
+  .consult-btn.form-submit-btn:hover {
+    background-color: #FFFCF5;
+    color: #010101;
+  }
+}
+
+/* Мобильные стили */
+@media (max-width: 768px) {
+  .btn__container.form-btn-container.active::before {
+    transform: translate(7px, -7px);
+    opacity: 1;
+    border-color: #010101;
+  }
+
+  .consult-btn.form-submit-btn {
+    transform: translate(0, 0) !important;
+  }
+}
+
+/* Анимация при нажатии */
+.btn__container.form-btn-container.active .consult-btn.form-submit-btn {
+  background-color: #FFFCF5;
+  color: #010101;
+  transition: all 0.5s ease-in-out;
 }

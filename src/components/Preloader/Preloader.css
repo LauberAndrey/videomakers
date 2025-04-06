@@ -67,6 +67,12 @@
   }
 }
 
+@media (max-width: 575px) {
+  .preloader .text-container h1{
+    font-size: 48px;
+  }
+}
+
 @media (max-width: 434px) {
   .preloader .text-container h1{
     font-size: 34px;

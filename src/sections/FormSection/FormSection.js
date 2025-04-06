@@ -100,6 +100,18 @@ const FormSection = forwardRef((props, ref) => {
 		}
 	}
 
+	const handleButtonPress = (e) => {
+		if (window.innerWidth >= 768) return;
+		
+		const btnContainer = e.currentTarget.closest('.btn__container');
+		if (btnContainer) {
+		  btnContainer.classList.add('active');
+		  setTimeout(() => {
+			btnContainer.classList.remove('active');
+		  }, 300);
+		}
+	  };
+
 	return (
 		<section
 			id='consultation-form'
@@ -191,7 +203,7 @@ const FormSection = forwardRef((props, ref) => {
 								</label>
 							</div>
 
-							<div className='btn__container form-btn-container'>
+							<div className='btn__container form-btn-container' onTouchStart={handleButtonPress}>
 								<button type='submit' className='consult-btn form-submit-btn'>
 									Оставить заявку
 								</button>
