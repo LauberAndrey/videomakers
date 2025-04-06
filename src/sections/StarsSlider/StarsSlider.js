@@ -101,11 +101,18 @@ const StarsSlider = () => {
         if (!isTouchDevice) return;
         
         const btnContainer = e.currentTarget;
+        
+        // Принудительный рефлоу для запуска анимации
+        void btnContainer.offsetWidth;
+        
         btnContainer.classList.add('active');
         
         setTimeout(() => {
             btnContainer.classList.remove('active');
-        }, 1000);
+            // Двойной рефлоу для гарантированного сброса
+            void btnContainer.offsetWidth;
+            void btnContainer.offsetWidth;
+        }, 300);
     };
 
     return (
@@ -146,6 +153,13 @@ const StarsSlider = () => {
                                     alt={slide.name}
                                     className='slide__image'
                                 />
+                                <div className="slide__play-button">
+                                    <img 
+                                        src='/images/play-text-btn.svg'
+                                        className='stars-section-play-icon'
+                                        alt='Кнопка воспроизведения'
+                                    />
+                                </div>
                             </div>
                             <div className='slide__content'>
                                 <h3 className='slide__name'>{slide.name}</h3>

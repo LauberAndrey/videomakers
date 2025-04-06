@@ -77,7 +77,6 @@
     transition: transform 0.3s ease;
 }
 
-.stars-slider__button-next .btn__container:hover::before,
 .stars-slider__button-next .btn__container.active::before {
     transform: translate(0px, 0px);
 }
@@ -85,11 +84,6 @@
 .stars-slider__button-prev .btn__container::before {
     transform: translate(7px, 7px);
     transition: transform 0.3s ease;
-}
-
-.stars-slider__button-prev .btn__container:hover::before,
-.stars-slider__button-prev .btn__container.active::before {
-    transform: translate(0px, 0px);
 }
 
 .stars-slider__button-prev,
@@ -137,4 +131,70 @@
 .swiper-slide-active {
     cursor: pointer;
     pointer-events: auto;
+}
+
+/* Новые стили для кнопки Play */
+
+/* Скрываем кнопку на всех слайдах */
+.stars-slider__slide .slide__play-button {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Показываем только на активном слайде */
+.stars-slider__slide.swiper-slide-active .slide__play-button {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Остальные стили кнопки */
+.slide__play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    cursor: pointer;
+    filter: drop-shadow(-17px 6px 9px #000000);
+}
+
+.stars-section-play-icon {
+    width: 80px;
+    height: 80px;
+    transition: all 0.3s ease;
+}
+
+
+@media (max-width: 768px) {
+    .stars-section-play-icon {
+        width: 60px;
+        height: 60px;
+        filter: drop-shadow(-2px 2px 5px #000000);
+    }
+}
+
+.stars-slider__slide.swiper-slide-active .slide__play-button {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+/* Для десктопных устройств */
+@media (hover: hover) {
+    .stars-slider__button-next .btn__container:hover::before,
+    .stars-slider__button-prev .btn__container:hover::before {
+        transform: translate(0px, 0px);
+    }
+}
+
+/* Для мобильных устройств */
+.stars-slider__navigation .btn__container.active::before {
+    transform: translate(0px, 0px) !important;
+    transition: transform 0.15s ease !important;
+}
+
+.stars-slider__button-next .btn__container::before,
+.stars-slider__button-prev .btn__container::before {
+    transition: transform 0.3s ease, opacity 0.15s ease !important;
 }
