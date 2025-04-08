@@ -142,6 +142,16 @@
     height: 100%;
 }
 
+.content-card-count {
+    font-family: 'TTTMedium', sans-serif;
+    position: absolute;
+    bottom: 0;
+    right: 32px;
+    font-weight: 500;
+    font-size: 128px;
+    color: #010101;
+}
+
 /* Мобильный слайдер */
 .content-mobile-slider-wrapper {
     position: relative;
@@ -331,6 +341,12 @@
         width: calc(32% - 18px) !important;
         min-width: calc(90% - -3px) !important;
         height: 490px !important;
+    }
+
+    .content-card-count {
+        bottom: 0;
+        right: 32px;
+        font-size: 80px;
     }
 }
 

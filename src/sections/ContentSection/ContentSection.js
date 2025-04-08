@@ -16,31 +16,26 @@ const ContentSection = () => {
 			problem: 'Недостаточно просмотров',
 			solution: 'Видео, которое увеличивает охваты',
 			bgClose: 'bg-card-close1',
-			bgOpen: 'bg-card-open1',
 		},
 		{
 			problem: 'Низкая вовлеченность',
 			solution: 'Видео, которое увлекает аудиторию',
 			bgClose: 'bg-card-close2',
-			bgOpen: 'bg-card-open2',
 		},
 		{
 			problem: 'Мало подписчиков',
 			solution: 'Видео, которое привлекает новых фанатов',
 			bgClose: 'bg-card-close3',
-			bgOpen: 'bg-card-open3',
 		},
 		{
 			problem: 'Слабый бренд',
 			solution: 'Видео, которое усиливает имидж',
 			bgClose: 'bg-card-close4',
-			bgOpen: 'bg-card-open4',
 		},
 		{
 			problem: 'Мало концертов',
 			solution: 'Видео, которое повышает узнаваемость',
 			bgClose: 'bg-card-close5',
-			bgOpen: 'bg-card-open5',
 		},
 	]
 
@@ -134,7 +129,7 @@ const ContentSection = () => {
 												activeIndex === index ? 'content-active' : ''
 											}`}
 											style={{
-												backgroundImage: `url(/images/${card.bgOpen}.svg)`,
+												backgroundImage: `url(/images/bg-card-open.jpg)`,
 											}}
 										>
 											<div className='content-mobile-card-content'>
@@ -145,6 +140,7 @@ const ContentSection = () => {
 													{card.solution}
 												</p>
 											</div>
+											<span className='content-card-count'>{`0${index + 1}`}</span>
 										</div>
 									</SwiperSlide>
 								))}
@@ -172,13 +168,13 @@ const ContentSection = () => {
 										<div
 											className='content-card-front'
 											style={{
-												backgroundImage: `url(/images/${card.bgClose}.svg)`,
+												backgroundImage: `url(/images/${card.bgClose}.jpg)`,
 											}}
 										/>
 										<div
 											className='content-card-back'
 											style={{
-												backgroundImage: `url(/images/${card.bgOpen}.svg)`,
+												backgroundImage: `url(/images/bg-card-open.jpg)`,
 											}}
 										>
 											<div className='content-card-content'>
@@ -187,6 +183,7 @@ const ContentSection = () => {
 												<h3 className='content-card-decision-title'>Решение</h3>
 												<p className='content-card-text'>{card.solution}</p>
 											</div>
+											<span className='content-card-count'>{`0${index + 1}`}</span>
 										</div>
 									</div>
 								))}

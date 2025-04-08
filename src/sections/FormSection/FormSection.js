@@ -1,4 +1,4 @@
-import React, { forwardRef, useState, useRef, useEffect } from 'react'
+import React, { forwardRef, useState, useRef } from 'react'
 import './FormSection.css'
 
 const FormSection = forwardRef((props, ref) => {
@@ -29,7 +29,6 @@ const FormSection = forwardRef((props, ref) => {
 
 	const handlePhoneChange = (e) => {
 		const input = e.target.value
-		const previousValue = phone
 		const cursorPos = e.target.selectionStart
 
 		// Сохраняем количество цифр до курсора

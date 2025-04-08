@@ -6,7 +6,7 @@
 .header__content {
     width: 100%;
     height: 691px;
-    background-image: url("/public/images/hero-bg.svg");
+    background-image: url("/public/images/hero-bg.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

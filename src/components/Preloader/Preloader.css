@@ -24,7 +24,7 @@
   margin: 0;
   font-size: 150px;
   color: rgba(225, 225, 225, .01);
-  background-image: url("/public/images/hero-bg.svg");
+  background-image: url("/public/images/hero-bg.jpg");
   background-repeat: repeat;
   -webkit-background-clip: text;
   background-clip: text;
