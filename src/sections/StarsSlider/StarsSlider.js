@@ -43,7 +43,7 @@ const StarsSlider = () => {
         {
             id: 4,
             image: 'images/image97.svg',
-            videoSrc: '/video/Циркус.mp4',
+            videoSrc: '/video/Циркус.mov',
             name: 'Циркус',
             text: 'Реклама своего цирка',
         },
@@ -57,28 +57,28 @@ const StarsSlider = () => {
         {
             id: 6,
             image: '/images/image91.svg',
-            videoSrc: '/video/Бак_с_бани.mp4',
+            videoSrc: '/video/Рикеда.mov',
             name: 'Рикеда',
             text: 'Клип, попавший на МузТВ и впечатливший лейблы',
         },
         {
             id: 7,
             image: '/images/image110.svg',
-            videoSrc: '/video/Бак_с_бани.mp4',
+            videoSrc: '/video/daasha.mov',
             name: 'DAASHA',
             text: 'ТЕКСТ',
         },
         {
             id: 8,
             image: '/images/image103.svg',
-            videoSrc: '/video/Бак_с_бани.mp4',
+            videoSrc: '/video/Малахова.mp4',
             name: 'Женя Малахова',
             text: 'ТЕКСТ',
         },
         {
             id: 9,
             image: '/images/image104.svg',
-            videoSrc: '/video/Бак_с_бани.mp4',
+            videoSrc: '/video/Лина.mp4',
             name: 'Лиана Артемова',
             text: 'ТЕКСТ',
         }
