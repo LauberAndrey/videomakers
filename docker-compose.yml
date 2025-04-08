@@ -5,5 +5,8 @@ services:
     build: .
     ports:
       - "80:80"
+      - "443:443"
+    volumes:
+      - ./path/to/cert.pem:/etc/ssl/cert.pem
+      - ./path/to/privkey.pem:/etc/ssl/privkey.pem
     restart: always
-
