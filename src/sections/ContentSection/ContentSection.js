@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo, useCallback } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { FreeMode, Mousewheel, Navigation, Pagination } from 'swiper/modules'
 import 'swiper/css'
@@ -8,10 +8,17 @@ import './ContentSection.css'
 
 const ContentSection = () => {
 	const [activeIndex, setActiveIndex] = useState(0)
-	const [isMobile, setIsMobile] = useState(false)
-	const [swiperInstance, setSwiperInstance] = useState(null)
+	const [isMobile, setIsMobile] = useState(window.innerWidth <= 780)
 
-	const cards = [
+	useEffect(() => {
+		const mediaQuery = window.matchMedia('(max-width: 780px)')
+		const handleChange = (e) => setIsMobile(e.matches)
+
+		mediaQuery.addEventListener('change', handleChange)
+		return () => mediaQuery.removeEventListener('change', handleChange)
+	}, [])
+
+	const cards = useMemo(() => [
 		{
 			problem: 'Недостаточно просмотров',
 			solution: 'Видео, которое увеличивает охваты',
@@ -37,21 +44,11 @@ const ContentSection = () => {
 			solution: 'Видео, которое повышает узнаваемость',
 			bgClose: 'bg-card-close5',
 		},
-	]
+	], [])
 
-	useEffect(() => {
-		const handleResize = () => {
-			setIsMobile(window.innerWidth <= 780)
-		}
-
-		handleResize()
-		window.addEventListener('resize', handleResize)
-		return () => window.removeEventListener('resize', handleResize)
-	}, [])
-
-	const handleSlideChange = (swiper) => {
+	const handleSlideChange = useCallback((swiper) => {
 		setActiveIndex(swiper.activeIndex)
-	}
+	}, [])
 
 	return (
 		<section className='wrapper-img content-section'>
@@ -67,9 +64,8 @@ const ContentSection = () => {
 						</h2>
 						<p className='content__text'>
 							<strong>Мы понимаем</strong> музыкальные бизнес-процессы и{' '}
-							<strong>снимаем видео</strong> под ваши цели: охваты,
-							популярность, гастроли. <strong>Скажите</strong>, чего хотите
-							достичь, а <strong>мы поможем</strong> этого добиться.
+							<strong>снимаем видео</strong> под ваши цели: охваты, популярность, гастроли.{' '}
+							<strong>Скажите</strong>, чего хотите достичь, а <strong>мы поможем</strong> этого добиться.
 						</p>
 					</div>
 
@@ -78,20 +74,12 @@ const ContentSection = () => {
 							<Swiper
 								modules={[Navigation, Pagination, FreeMode, Mousewheel]}
 								className='content-swiper-container'
-								spaceBetween={20}
-								slidesPerView='auto'
+								slidesPerView={'auto'}
 								centeredSlides={true}
-								freeMode={{
-									enabled: true,
-									sticky: true,
-									momentumBounce: false,
-								}}
-								mousewheel={{
-									forceToAxis: true,
-									sensitivity: 0.7,
-								}}
+								spaceBetween={20}
+								freeMode={{ enabled: true, sticky: true }}
+								mousewheel={{ forceToAxis: true, sensitivity: 0.6 }}
 								resistanceRatio={0}
-								onSwiper={setSwiperInstance}
 								onSlideChange={handleSlideChange}
 								pagination={{
 									el: '.content-slider-dots',
@@ -105,16 +93,13 @@ const ContentSection = () => {
 									320: {
 										slidesPerView: 1.1,
 										spaceBetween: 15,
-										freeMode: { momentumVelocityRatio: 0.5 },
 									},
 									480: {
 										slidesPerView: 1.2,
-										freeMode: { momentumVelocityRatio: 0.6 },
 									},
 									640: {
 										slidesPerView: 'auto',
 										spaceBetween: 20,
-										freeMode: { momentumVelocityRatio: 0.7 },
 									},
 								}}
 							>
@@ -125,20 +110,14 @@ const ContentSection = () => {
 										style={{ width: '320px' }}
 									>
 										<div
-											className={`content-mobile-card ${
-												activeIndex === index ? 'content-active' : ''
-											}`}
-											style={{
-												backgroundImage: `url(/images/bg-card-open.jpg)`,
-											}}
+											className={`content-mobile-card ${activeIndex === index ? 'content-active' : ''}`}
+											style={{ backgroundImage: 'url(/images/bg-card-open.jpg)' }}
 										>
 											<div className='content-mobile-card-content'>
 												<h3 className='content-card-problem-title'>Проблема</h3>
 												<p className='content-card-text'>{card.problem}</p>
 												<h3 className='content-card-decision-title'>Решение</h3>
-												<p className='content-card-text content-solution'>
-													{card.solution}
-												</p>
+												<p className='content-card-text content-solution'>{card.solution}</p>
 											</div>
 											<span className='content-card-count'>{`0${index + 1}`}</span>
 										</div>
@@ -150,32 +129,23 @@ const ContentSection = () => {
 					) : (
 						<>
 							<div className='content__image'>
-								<img
-									src='/images/content-icon-top.svg'
-									alt='Декоративный элемент'
-								/>
+								<img src='/images/content-icon-top.svg' alt='Декоративный элемент' />
 							</div>
 
 							<div className='content-cards-container'>
 								{cards.map((card, index) => (
 									<div
 										key={index}
-										className={`content-card ${
-											activeIndex === index ? 'content-active' : ''
-										}`}
+										className={`content-card ${activeIndex === index ? 'content-active' : ''}`}
 										onClick={() => setActiveIndex(index)}
 									>
 										<div
 											className='content-card-front'
-											style={{
-												backgroundImage: `url(/images/${card.bgClose}.jpg)`,
-											}}
+											style={{ backgroundImage: `url(/images/${card.bgClose}.jpg)` }}
 										/>
 										<div
 											className='content-card-back'
-											style={{
-												backgroundImage: `url(/images/bg-card-open.jpg)`,
-											}}
+											style={{ backgroundImage: 'url(/images/bg-card-open.jpg)' }}
 										>
 											<div className='content-card-content'>
 												<h3 className='content-card-problem-title'>Проблема</h3>
@@ -190,10 +160,7 @@ const ContentSection = () => {
 							</div>
 
 							<div className='content__secondary-image'>
-								<img
-									src='/images/content-secondary-image.svg'
-									alt='Декоративный элемент'
-								/>
+								<img src='/images/content-secondary-image.svg' alt='Декоративный элемент' />
 							</div>
 						</>
 					)}

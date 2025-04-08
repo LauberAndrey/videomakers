@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
-import Preloader from './components/Preloader/Preloader';
+import React, { useRef } from 'react';
 import Header from './sections/Header/Header';
 import ContentSection from './sections/ContentSection/ContentSection';
 import StatsSection from './sections/StatsSection/StatsSection';
@@ -12,21 +11,21 @@ import Footer from './sections/Footer/Footer';
 import './App.css';
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const formRef = useRef(null);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-      document.body.classList.add('loaded');
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setIsLoading(false);
+  //     document.body.classList.add('loaded');
+  //   }, 2000);
+  //
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   return (
     <div className="app">
-      {isLoading && <Preloader />}
+      {/*{isLoading && <Preloader />}*/}
       <Header scrollRef={formRef} />
       <ContentSection />
       <StatsSection />
