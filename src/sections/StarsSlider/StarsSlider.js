@@ -21,7 +21,7 @@ const StarsSlider = () => {
     const slides = [
         {
             id: 1,
-            image: '/images/image89.svg',
+            image: '/images/image89.jpg',
             videoSrc: '/video/Music_Hunters_Band.mp4',
             name: 'MUSIC HUNTERS BAND',
             text: 'Первое видео — и гастроли по стране',

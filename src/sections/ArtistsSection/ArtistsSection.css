@@ -8,7 +8,7 @@
   }
   
   .artists-section-bg {
-    background-image: url("/public/images/SCREEN_6.svg");
+    background-image: url("/public/images/SCREEN_6.png");
     background-repeat: no-repeat;
     background-size: cover;
     padding: 166px 0 185px;
@@ -120,7 +120,7 @@
     }
     
     .artists-section-bg {
-      background-image: url(/public/images/SCREEN_6.svg);
+      background-image: url(/public/images/SCREEN_6.png);
       padding: 60px 0 80px;
     }
     
