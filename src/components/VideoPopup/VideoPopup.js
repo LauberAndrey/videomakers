@@ -34,7 +34,7 @@ const VideoPopup = ({ videoSrc, onClose }) => {
       }
     };
 
-    playVideo(); // Запустим видео сразу при открытии
+    playVideo();
 
     const handleTimeUpdate = () => {
       if (video.duration && !isDragging) {
