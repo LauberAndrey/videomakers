@@ -6,7 +6,7 @@ const VideoPopup = ({ videoSrc, onClose }) => {
   const progressContainerRef = useRef(null);
   const volumeContainerRef = useRef(null);
   const popupContentRef = useRef(null);
-  
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [timeDisplay, setTimeDisplay] = useState('00:00 / 00:00');
@@ -20,16 +20,28 @@ const VideoPopup = ({ videoSrc, onClose }) => {
 
   useEffect(() => {
     const video = videoRef.current;
+
     if (!video) return;
 
     video.volume = volume;
+
+    const playVideo = async () => {
+      try {
+        await video.play();
+        setIsPlaying(true);
+      } catch (e) {
+        console.error("Ошибка при автозапуске видео:", e);
+      }
+    };
+
+    playVideo(); // Запустим видео сразу при открытии
 
     const handleTimeUpdate = () => {
       if (video.duration && !isDragging) {
         const percent = (video.currentTime / video.duration) * 100;
         setProgress(percent);
         setTimeDisplay(
-          `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`
+            `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`
         );
       }
     };
@@ -39,7 +51,9 @@ const VideoPopup = ({ videoSrc, onClose }) => {
     };
 
     const handleFullscreenChange = () => {
-      setIsFullscreen(!!(document.fullscreenElement || document.webkitFullscreenElement));
+      setIsFullscreen(
+          !!(document.fullscreenElement || document.webkitFullscreenElement)
+      );
     };
 
     const handleMouseMove = (e) => {
@@ -56,7 +70,7 @@ const VideoPopup = ({ videoSrc, onClose }) => {
     video.addEventListener('loadedmetadata', handleLoadedMetadata);
     video.addEventListener('play', () => setIsPlaying(true));
     video.addEventListener('pause', () => setIsPlaying(false));
-    
+
     document.addEventListener('fullscreenchange', handleFullscreenChange);
     document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
     document.addEventListener('mousemove', handleMouseMove);
@@ -69,7 +83,7 @@ const VideoPopup = ({ videoSrc, onClose }) => {
       video.removeEventListener('loadedmetadata', handleLoadedMetadata);
       video.removeEventListener('play', () => setIsPlaying(true));
       video.removeEventListener('pause', () => setIsPlaying(false));
-      
+
       document.removeEventListener('fullscreenchange', handleFullscreenChange);
       document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
       document.removeEventListener('mousemove', handleMouseMove);
@@ -78,6 +92,7 @@ const VideoPopup = ({ videoSrc, onClose }) => {
       document.removeEventListener('touchend', handleMouseUp);
     };
   }, [isDragging, isVolumeDragging, volume]);
+
 
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60);
@@ -148,9 +163,9 @@ const VideoPopup = ({ videoSrc, onClose }) => {
 
   return (
     <div className={`popup-overlay ${isFullscreen ? 'fullscreen' : ''}`} onClick={onClose}>
-      <div 
-        className="popup-content" 
-        ref={popupContentRef} 
+      <div
+        className="popup-content"
+        ref={popupContentRef}
         onClick={(e) => e.stopPropagation()}
       >
         <span className="close-btn" onClick={onClose}>
@@ -171,7 +186,7 @@ const VideoPopup = ({ videoSrc, onClose }) => {
             <button className="play-btn" onClick={togglePlay}>
               {isPlaying ? '⏸' : '▶'}
             </button>
-            
+
             <div
               ref={progressContainerRef}
               className="progress-bar-container"
@@ -183,9 +198,9 @@ const VideoPopup = ({ videoSrc, onClose }) => {
                 <div className="progress-thumb" />
               </div>
             </div>
-            
+
             <div className="time-display">{timeDisplay}</div>
-            
+
             <div className="volume-control">
               <button className="volume-btn" onClick={toggleMute}>
                 {isMuted ? '🔇' : volume > 0.5 ? '🔊' : '🔉'}
@@ -202,7 +217,7 @@ const VideoPopup = ({ videoSrc, onClose }) => {
                 </div>
               </div>
             </div>
-            
+
             <button className="fullscreen-btn" onClick={toggleFullscreen}>
               {isFullscreen ? '⤡' : '⤢'}
             </button>

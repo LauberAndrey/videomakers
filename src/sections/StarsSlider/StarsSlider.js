@@ -43,7 +43,7 @@ const StarsSlider = () => {
         {
             id: 4,
             image: 'images/image97.svg',
-            videoSrc: '/video/Циркус.mov',
+            videoSrc: '/video/Циркус.mp4',
             name: 'Циркус',
             text: 'Реклама своего цирка',
         },
@@ -57,14 +57,14 @@ const StarsSlider = () => {
         {
             id: 6,
             image: '/images/image91.svg',
-            videoSrc: '/video/Рикеда.mov',
+            videoSrc: '/video/Рикеда.mp4',
             name: 'Рикеда',
             text: 'Клип, попавший на МузТВ и впечатливший лейблы',
         },
         {
             id: 7,
             image: '/images/image110.svg',
-            videoSrc: '/video/daasha.mov',
+            videoSrc: '/video/daasha.mp4',
             name: 'DAASHA',
             text: 'ТЕКСТ',
         },
