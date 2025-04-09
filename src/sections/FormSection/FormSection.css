@@ -241,7 +241,6 @@
   }
 }
 
-/* Базовые стили кнопки */
 .btn__container.form-btn-container {
   position: relative;
   display: inline-block;
@@ -270,7 +269,6 @@
   transition: all 0.5s ease-in-out;
 }
 
-/* Ховер-эффекты для десктопа */
 @media (hover: hover) {
   .btn__container.form-btn-container:hover::before {
     transform: translate(0, 0);
@@ -283,7 +281,6 @@
   }
 }
 
-/* Мобильные стили */
 @media (max-width: 768px) {
   .btn__container.form-btn-container.active::before {
     transform: translate(7px, -7px);
@@ -296,7 +293,6 @@
   }
 }
 
-/* Анимация при нажатии */
 .btn__container.form-btn-container.active .consult-btn.form-submit-btn {
   background-color: #FFFCF5;
   color: #010101;

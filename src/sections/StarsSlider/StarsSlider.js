@@ -102,14 +102,12 @@ const StarsSlider = () => {
         
         const btnContainer = e.currentTarget;
         
-        // Принудительный рефлоу для запуска анимации
         void btnContainer.offsetWidth;
         
         btnContainer.classList.add('active');
         
         setTimeout(() => {
             btnContainer.classList.remove('active');
-            // Двойной рефлоу для гарантированного сброса
             void btnContainer.offsetWidth;
             void btnContainer.offsetWidth;
         }, 300);

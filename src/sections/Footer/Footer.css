@@ -157,7 +157,6 @@
   }
 }
 
-/* Общие стили для всех кнопок */
 .btn__container {
   position: relative;
   display: inline-block;
@@ -178,13 +177,11 @@
   transition: all 0.5s ease-in-out;
 }
 
-/* Социальные кнопки */
 .social-btn-container {
   width: 52px;
   height: 52px;
 }
 
-/* Основная кнопка футера */
 .footer-btn-container::before {
   border-color: #D6FF00;
 }
@@ -196,7 +193,6 @@
   transition: all 0.5s ease-in-out;
 }
 
-/* Ховер-эффекты для десктопа */
 @media (hover: hover) {
   .btn__container:hover::before {
     transform: translate(0, 0);
@@ -212,7 +208,6 @@
   }
 }
 
-/* Мобильные стили */
 @media (max-width: 768px) {
   .btn__container.active::before {
     transform: translate(7px, -7px);
@@ -230,7 +225,6 @@
   }
 }
 
-/* Адаптация под существующие стили */
 .footer-social {
   gap: 22px;
   margin-bottom: 26px;

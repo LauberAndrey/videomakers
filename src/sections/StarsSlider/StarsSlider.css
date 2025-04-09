@@ -133,22 +133,17 @@
     pointer-events: auto;
 }
 
-/* Новые стили для кнопки Play */
-
-/* Скрываем кнопку на всех слайдах */
 .stars-slider__slide .slide__play-button {
     opacity: 0;
     visibility: hidden;
     transition: all 0.5s ease;
 }
 
-/* Показываем только на активном слайде */
 .stars-slider__slide.swiper-slide-active .slide__play-button {
     opacity: 1;
     visibility: visible;
 }
 
-/* Остальные стили кнопки */
 .slide__play-button {
     position: absolute;
     top: 50%;
@@ -180,7 +175,6 @@
     transition: opacity 0.5s ease, filter 0.5s ease;
 }
 
-/* Для десктопных устройств */
 @media (hover: hover) {
     .stars-slider__button-next .btn__container:hover::before,
     .stars-slider__button-prev .btn__container:hover::before {
@@ -188,7 +182,6 @@
     }
 }
 
-/* Для мобильных устройств */
 .stars-slider__navigation .btn__container.active::before {
     transform: translate(0px, 0px) !important;
     transition: transform 0.5s ease !important;

@@ -41,7 +41,6 @@ const Header = ({ scrollRef }) => {
     if (!btnContainer) return
     
     if (isTouch) {
-        // Принудительный рефлоу для запуска анимации
         void btnContainer.offsetWidth;
         btnContainer.classList.add('active')
         
