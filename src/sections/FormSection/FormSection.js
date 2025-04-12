@@ -82,7 +82,7 @@ const FormSection = forwardRef((props, ref) => {
         setFormData(prev => ({...prev, [name]: value}))
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         
         const cleanPhone = formData.phone.replace(/\D/g, '')
@@ -93,8 +93,43 @@ const FormSection = forwardRef((props, ref) => {
         
         console.log('Form data:', dataToSend)
         
-        //отправка на бэк
+        await sendMessageToTelegram(
+            `Новая заявка с сайта!\n
+            Имя: ${dataToSend.name}\n
+            Телефон: ${dataToSend.phone}\n
+            Описание: ${dataToSend.description}\n
+            Группа/артист: ${dataToSend.artist}`
+        )
+
+        setFormData({
+            name: '',
+            phone: '',
+            artist: '',
+            description: ''
+        })
     }
+
+    const sendMessageToTelegram = async (text) => {
+        const chatId = 761929046;
+        const url = `https://api.telegram.org/bot7634072014:AAFx8TWuw4vkQoSe66bpmrnfAbeYe8HqlDs/sendMessage`;
+        const message = {
+            chat_id: chatId,
+            text: text,
+        };
+
+        try {
+            const res = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(message),
+            });
+            const data = await res.json();
+        } catch (error) {
+            console.error('Ошибка отправки сообщения:', error);
+        }
+    };
 
     const handleButtonPress = (e) => {
         if (window.innerWidth >= 768) return;
