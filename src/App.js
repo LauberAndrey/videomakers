@@ -1,9 +1,10 @@
 import React, { useRef } from 'react';
+import FixedMenu from './components/FixedMenu/FixedMenu';
 import Header from './sections/Header/Header';
 import ContentSection from './sections/ContentSection/ContentSection';
 import StatsSection from './sections/StatsSection/StatsSection';
 import StarsSlider from './sections/StarsSlider/StarsSlider';
-import VideoSection from './sections/VideoSection/VideoSection';
+// import VideoSection from './sections/VideoSection/VideoSection';
 import ArtistsSection from './sections/ArtistsSection/ArtistsSection';
 import ReviewsSection from './sections/ReviewsSection/ReviewsSection';
 import FormSection from './sections/FormSection/FormSection';
@@ -25,12 +26,13 @@ function App() {
 
   return (
     <div className="app">
+      <FixedMenu />
       {/*{isLoading && <Preloader />}*/}
       <Header scrollRef={formRef} />
       <ContentSection />
       <StatsSection />
       <StarsSlider />
-      <VideoSection />
+      {/* <VideoSection /> */}
       <ArtistsSection />
       <ReviewsSection />
       <FormSection ref={formRef} />
