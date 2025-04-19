@@ -29,9 +29,9 @@ function App() {
       <FixedMenu />
       {/*{isLoading && <Preloader />}*/}
       <Header scrollRef={formRef} />
-      <ContentSection />
       <StatsSection />
       <StarsSlider />
+      <ContentSection />
       {/* <VideoSection /> */}
       <ArtistsSection />
       <ReviewsSection />
