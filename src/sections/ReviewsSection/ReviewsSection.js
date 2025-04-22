@@ -92,7 +92,7 @@ const ReviewsSection = () => {
 	}
 
 	return (
-		<section className='wrapper-img client-reviews-section'>
+		<section className='wrapper-img client-reviews-section' id='reviews'>
 			<div className='client-reviews-bg'>
 				<div className='client-reviews-container'>
 					<h2 className='client-reviews-title'>

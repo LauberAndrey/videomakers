@@ -24,64 +24,64 @@ const StarsSlider = () => {
             image: '/images/image89.jpg',
             videoSrc: '/video/Music_Hunters_Band.mp4',
             name: 'MUSIC HUNTERS BAND',
-            text: 'Первое видео — и гастроли по стране',
+            text: 'В библиотеке шуметь что? Правильно – нельзя! Промо-сниппет для духового коллектива.',
         },
         {
             id: 2,
             image: 'images/image87.svg',
             videoSrc: '/video/Bombey.mp4',
             name: 'BOMBEY',
-            text: '3.5 миллиона просмотров, новый стандарт для  индустрии',
+            text: 'Впервые в мире. Первая кавер-рок-хор-оркестра live программа, концептуально созданная и спродюсированная Николаем Вечерским. Презентация в виде промо.',
         },
         {
             id: 3,
             image: 'images/image93.svg',
             videoSrc: '/video/Пресняков.mp4',
             name: 'Владимир Пресняков',
-            text: 'Реализовали сложный проект со скрытыми смыслами за крайне низкий для такого артиста бюджет',
+            text: 'Клип на песню Владимира Преснякова «Небо». Миллион вариаций и только один релиз.',
         },
+        // {
+        //     id: 4,
+        //     image: 'images/image97.svg',
+        //     videoSrc: '/video/Циркус.mp4',
+        //     name: 'Циркус',
+        //     text: 'Реклама своего цирка',
+        // },
+        // {
+        //     id: 5,
+        //     image: '/images/image95.svg',
+        //     videoSrc: '/video/Бак_с_бани.mp4',
+        //     name: 'Бак с бани',
+        //     text: 'Старая и добрая - классика',
+        // },
         {
             id: 4,
-            image: 'images/image97.svg',
-            videoSrc: '/video/Циркус.mp4',
-            name: 'Циркус',
-            text: 'Реклама своего цирка',
+            image: '/images/image91.svg',
+            videoSrc: '/video/Рикеда.mp4',
+            name: 'Катя Рикеда',
+            text: 'Клип для автора и исполнителя песен Катя Рикеда. Дебютная работа была приглашена на МУЗ-ТВ, победила в выпуске шоу «Муз раскрутка» и скоро попадёт в ротацию.',
         },
         {
             id: 5,
-            image: '/images/image95.svg',
-            videoSrc: '/video/Бак_с_бани.mp4',
-            name: 'Бак с бани',
-            text: 'Старая и добрая - классика',
-        },
-        {
-            id: 6,
-            image: '/images/image91.svg',
-            videoSrc: '/video/Рикеда.mp4',
-            name: 'Рикеда',
-            text: 'Клип, попавший на МузТВ и впечатливший лейблы',
-        },
-        {
-            id: 7,
             image: '/images/image110.svg',
             videoSrc: '/video/daasha.mp4',
             name: 'DAASHA',
-            text: 'ТЕКСТ',
+            text: 'Клип на песню артиста Velvet Music Dashaa «Пауза». В ближайшее время появится в ротации на МУЗ-ТВ.',
         },
         {
-            id: 8,
+            id: 6,
             image: '/images/image103.svg',
             videoSrc: '/video/Малахова.mp4',
             name: 'Женя Малахова',
-            text: 'ТЕКСТ',
+            text: 'Клип на песню Жени Малаховой «Ничего не обещал». Снят для продакшна Mag Film Алексея Голубева.',
         },
-        {
-            id: 9,
-            image: '/images/image104.svg',
-            videoSrc: '/video/Лина.mp4',
-            name: 'Лиана Артемова',
-            text: 'ТЕКСТ',
-        }
+        // {
+        //     id: 9,
+        //     image: '/images/image104.svg',
+        //     videoSrc: '/video/Лина.mp4',
+        //     name: 'Лиана Артемова',
+        //     text: 'ТЕКСТ',
+        // }
     ];
 
     const handleSlideClick = (index, videoSrc) => {
@@ -114,7 +114,7 @@ const StarsSlider = () => {
     };
 
     return (
-        <section className='wrapper-img stars-slider'>
+        <section className='wrapper-img stars-slider' id='stars-slider'>
             <div className='container'>
                 <Swiper
                     effect={'coverflow'}

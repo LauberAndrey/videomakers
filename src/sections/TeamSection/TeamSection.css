@@ -1,0 +1,195 @@
+.team-section {
+    padding: 80px 0;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.team-title {
+    font-family: 'TTTMedium';
+    color: #D6FF00;
+    font-size: 68px;
+    margin-bottom: 70px;
+    text-align: center;
+}
+
+.team-column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.team-card {
+    height: 120px;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+}
+
+.team-card.active {
+    height: 355px;
+}
+
+.card-content {
+    display: flex;
+    gap: 40px;
+    padding: 20px 0;
+}
+
+.photo-placeholder {
+    width: 320px;
+    height: 320px;
+    flex-shrink: 0;
+}
+
+.photo-placeholder img{
+    border-radius: 10px;
+    width: 320px;
+    height: 320px;
+}
+
+.text-content {
+    flex: 1;
+    /* padding-right: 200px; */
+}
+
+.text-content__head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap:wrap ;
+    column-gap: 20px;
+}
+
+.member-name {
+    font-family: 'TTTBold';
+    color: #D6FF00;
+    font-size: 36px;
+    margin-bottom: 15px;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.team-card.active .member-name {
+    opacity: 1;
+}
+
+.member-role {
+    font-family: 'Steppe';
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 16px;
+}
+
+.member-description {
+    font-family: 'Steppe';
+    color: #FFFCF5;
+    font-size: 20px;
+    margin-top: 25px;
+    opacity: 0;
+    max-width: 510px;
+    transition: opacity 0.3s 0.2s;
+}
+
+.team-card.active .member-description {
+    opacity: 1;
+}
+
+.separator-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.team-section {
+    position: relative;
+}
+
+.team-decor-icon {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.top-icon {
+    top: 40px;
+    right: 320px;
+    width: 35px;
+}
+
+.bottom-icon {
+    bottom: -50px;
+    right: 40px;
+    width: 96px;
+}
+
+@media (max-width: 1355px){
+    .text-content__head{
+        flex-direction: column;
+        align-items: start;
+    }
+}
+
+@media (max-width: 963px){
+    .member-name {
+        font-size: 26px;
+    }
+
+    .member-description{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 810px){
+    .card-content{
+        padding: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .team-card {
+        /* height: auto !important; */
+        cursor: default;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .team-card.active {
+        height: 600px;
+    }
+
+    .card-content {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .photo-placeholder {
+        width: 100%;
+        height: 320px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .text-content {
+        padding-right: 0;
+    }
+
+    .member-description {
+        opacity: 1 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-title {
+        font-size: 42px;
+    }
+}

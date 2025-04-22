@@ -30,9 +30,20 @@ body {
     }
 }
 
-@media (min-width: 676px) {
+@media (min-width: 721px) {
     .container {
         padding: 0 56px;
+    }
+
+    .header {
+        
+        padding-top: 42px;
+    }
+}
+
+@media (min-width: 676px) and (max-width: 720px) {
+    .container {
+        padding: 0 10px;
     }
 
     .header {

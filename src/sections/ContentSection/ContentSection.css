@@ -238,14 +238,17 @@
 
 .content-card-text {
     font-family: "Steppe", sans-serif;
-    font-size: 22px;
+    font-size: 28px;
     line-height: 1.4;
     color: #020202;
     padding-bottom: 45px;
+    font-weight: 700;
 }
 
 .content-card-text.content-solution {
     color: #000;
+    font-size: 22px;
+    font-weight: 400;
 }
 
 @media (max-width: 1200px) {
@@ -266,6 +269,7 @@
 @media (max-width: 780px) {
     .content__section {
         padding: 0;
+        padding-top: 60px;
     }
     
     .content__title {

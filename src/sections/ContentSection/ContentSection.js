@@ -20,13 +20,13 @@ const ContentSection = () => {
 
 	const cards = useMemo(() => [
 		{
-			problem: 'Недостаточно просмотров',
-			solution: 'Видео, которое увеличивает охваты',
+			problem: 'Комплексный подход',
+			solution: 'С каждой съемки - не только клип, но и вертикальный контент, бэкстейдж, фото для афиши, рилсы - всё включено в большинстве проектов',
 			bgClose: 'bg-card-close1',
 		},
 		{
-			problem: 'Низкая вовлеченность',
-			solution: 'Видео, которое увлекает аудиторию',
+			problem: 'Топ-контент',
+			solution: 'Не хуже, чем у метров индустрии, но экономнее',
 			bgClose: 'bg-card-close2',
 		},
 		{
@@ -35,13 +35,13 @@ const ContentSection = () => {
 			bgClose: 'bg-card-close3',
 		},
 		{
-			problem: 'Слабый бренд',
-			solution: 'Видео, которое усиливает имидж',
+			problem: 'Точно в цель',
+			solution: 'Вникаем в целевую аудиторию, анализируем треки и выжимаем максимум результата из бюджета',
 			bgClose: 'bg-card-close4',
 		},
 		{
-			problem: 'Мало концертов',
-			solution: 'Видео, которое повышает узнаваемость',
+			problem: 'Разумная цена',
+			solution: 'Большой опыт, но мы ещё не успели охренеть',
 			bgClose: 'bg-card-close5',
 		},
 	], [])
@@ -114,9 +114,9 @@ const ContentSection = () => {
 											style={{ backgroundImage: 'url(/images/bg-card-open.jpg)' }}
 										>
 											<div className='content-mobile-card-content'>
-												<h3 className='content-card-problem-title'>Проблема</h3>
+												{/* <h3 className='content-card-problem-title'>Проблема</h3> */}
 												<p className='content-card-text'>{card.problem}</p>
-												<h3 className='content-card-decision-title'>Решение</h3>
+												{/* <h3 className='content-card-decision-title'>Решение</h3> */}
 												<p className='content-card-text content-solution'>{card.solution}</p>
 											</div>
 											<span className='content-card-count'>{`0${index + 1}`}</span>
@@ -148,10 +148,10 @@ const ContentSection = () => {
 											style={{ backgroundImage: 'url(/images/bg-card-open.jpg)' }}
 										>
 											<div className='content-card-content'>
-												<h3 className='content-card-problem-title'>Проблема</h3>
+												{/* <h3 className='content-card-problem-title'>Проблема</h3> */}
 												<p className='content-card-text'>{card.problem}</p>
-												<h3 className='content-card-decision-title'>Решение</h3>
-												<p className='content-card-text'>{card.solution}</p>
+												{/* <h3 className='content-card-decision-title'>Решение</h3> */}
+												<p className='content-card-text content-solution'>{card.solution}</p>
 											</div>
 											<span className='content-card-count'>{`0${index + 1}`}</span>
 										</div>

@@ -43,17 +43,17 @@ const FixedMenu = () => {
             {/* Основное меню */}
             <ul className={`menu__list ${mobileMenuOpen ? 'menu__list--open' : ''}`}>
               <li className='menu__item'>
-                <a href='#main' className='menu__link' onClick={() => setMobileMenuOpen(false)}>
+                <a href='#header' className='menu__link' onClick={() => setMobileMenuOpen(false)}>
                   Главная
                 </a>
               </li>
               <li className='menu__item'>
-                <a href='#portfolio' className='menu__link' onClick={() => setMobileMenuOpen(false)}>
+                <a href='#stars-slider' className='menu__link' onClick={() => setMobileMenuOpen(false)}>
                   Портфолио
                 </a>
               </li>
               <li className='menu__item'>
-                <a href='#team' className='menu__link' onClick={() => setMobileMenuOpen(false)}>
+                <a href='#team-section' className='menu__link' onClick={() => setMobileMenuOpen(false)}>
                   Команда
                 </a>
               </li>
@@ -63,7 +63,7 @@ const FixedMenu = () => {
                 </a>
               </li>
               <li className='menu__item'>
-                <a href='#contacts' className='menu__link' onClick={() => setMobileMenuOpen(false)}>
+                <a href='#consultation-form' className='menu__link' onClick={() => setMobileMenuOpen(false)}>
                   Контакты
                 </a>
               </li>

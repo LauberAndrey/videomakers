@@ -9,6 +9,7 @@ import ArtistsSection from './sections/ArtistsSection/ArtistsSection';
 import ReviewsSection from './sections/ReviewsSection/ReviewsSection';
 import FormSection from './sections/FormSection/FormSection';
 import Footer from './sections/Footer/Footer';
+import TeamSection from './sections/TeamSection/TeamSection';
 import './App.css';
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
       <StatsSection />
       <StarsSlider />
       <ContentSection />
+      <TeamSection />
       {/* <VideoSection /> */}
       <ArtistsSection />
       <ReviewsSection />

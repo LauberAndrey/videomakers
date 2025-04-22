@@ -1,6 +1,7 @@
 .stats-section {
     position: relative;
-    padding: 4rem 1rem;
+    padding: 12rem 2rem;
+    background-color: #010101;
     overflow: hidden;
 }
 
@@ -13,175 +14,115 @@
 .stats-content {
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    align-items: center;
     position: relative;
     z-index: 2;
 }
 
-.stats-numbers {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    order: 2;
-}
-
-.stats-item {
-    text-align: center;
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    backdrop-filter: blur(4px);
-}
-
-.stats-number {
-    font-family: 'TTTBold', sans-serif;
-    color: #D6FF00;
-    line-height: 1.2;
-    margin-bottom: 0.5rem;
-    font-size: clamp(2.5rem, 5vw, 3.25rem);
-}
-
-.stats-label {
-    font-family: 'Steppe', sans-serif;
-    color: #FFFCF5;
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    opacity: 0.9;
-}
-
 .stats-text-block {
+    width: 100%;
     text-align: center;
-    order: 1;
-    position: relative;
-    z-index: 3;
 }
 
-.stats-description {
+.stats-title {
     font-family: 'TTTMedium', sans-serif;
     color: #FFFCF5;
-    line-height: 1.1;
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
-    margin: 0.5em 0;
+    font-size: 64px;
+    line-height: 1.2;
+    margin: 0;
+    white-space: nowrap;
 }
 
-.stats-description-strong {
+.stats-highlight {
     font-family: 'TTTBold', sans-serif;
     color: #D6FF00;
-    display: block;
-    font-size: clamp(3rem, 12vw, 6rem);
-    line-height: 0.9;
-    margin: 0.25em 0;
+    font-size: 96px;
 }
 
 .stats-decoration {
-    display: none;
+    position: absolute;
+    z-index: 1;
     pointer-events: none;
 }
 
-@media (min-width: 768px) {
+.stats-ellipse {
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    width: min(40vw, 500px);
+}
+
+.stats-star {
+    right: 5%;
+    /* bottom: -5%; */
+    width: min(15vw, 150px);
+    transform: translateX(-50%);
+}
+
+/* Адаптация */
+@media (max-width: 1300px) {
+    .stats-title {
+        font-size: 54px;
+    }
+
+    .stats-highlight {
+        font-size: 86px;
+    }
+}
+
+@media (max-width: 1140px) {
+    .stats-title {
+        font-size: 44px;
+    }
+
+    .stats-highlight {
+        font-size: 66px;
+    }
+}
+
+@media (max-width: 900px) {
     .stats-section {
-        padding: 6rem 2rem;
+        padding: 10rem 1rem;
     }
 
-    .stats-content {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 2rem;
+    .stats-title {
+        font-size: 34px;
     }
 
-    .stats-numbers {
-        flex: 0 0 40%;
-        max-width: 400px;
-        order: 0;
-        grid-template-columns: 1fr;
+    .stats-highlight {
+        font-size: 46px;
     }
+}
 
-    .stats-item {
-        text-align: left;
-        background: none;
-        backdrop-filter: none;
-        padding: 1rem;
-    }
-
-    .stats-text-block {
-        text-align: right;
-        flex: 1;
-        padding-left: 2rem;
-    }
-
-    .stats-description {
-        font-size: clamp(3rem, 5vw, 5.5rem);
-    }
-
-    .stats-description-strong {
-        font-size: clamp(4rem, 8vw, 8rem);
-    }
-
-    .stats-decoration {
-        display: block;
-        position: absolute;
-        z-index: 1;
-    }
-
+@media (max-width: 768px) {
     .stats-ellipse {
-        top: 50%;
-        left: 30%;
-        transform: translate(-50%, -50%);
-        width: min(40vw, 500px);
+        width: 250px;
     }
 
     .stats-star {
-        left: 50%;
-        bottom: -5%;
-        width: min(15vw, 150px);
-        transform: translateX(-50%);
+        width: 47px;
+        bottom: -75px;
     }
 }
 
-@media (min-width: 1200px) {
-    .stats-numbers {
-        gap: 3.5rem;
+@media (max-width: 660px) {
+    .stats-title br {
+        display: none;
     }
 
-    .stats-description {
-        font-size: clamp(3rem, 5vw, 5.5rem);
-    }
-
-    .stats-description-strong {
-        font-size: clamp(4rem, 8vw, 8rem);
-    }
-
-    .stats-number {
-        font-size: 3.5rem;
-    }
-
-    .stats-label {
-        font-size: 1.5rem;
+    .stats-title {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
     }
 }
 
-@media (max-width: 480px) {
-    .stats-numbers {
-        grid-template-columns: 1fr;
+@media (max-width: 350px) {
+    .stats-title {
+        font-size: 24px;
     }
 
-    .stats-item {
-        padding: 1rem;
-    }
-
-    .stats-number {
-        font-size: 2.25rem;
-    }
-
-    .stats-label {
-        font-size: 1rem;
-    }
-
-    .stats-description {
-        font-size: 2rem;
-    }
-
-    .stats-description-strong {
-        font-size: 2.75rem;
+    .stats-highlight {
+        font-size: 36px;
     }
 }
