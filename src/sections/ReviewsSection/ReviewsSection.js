@@ -10,64 +10,46 @@ const ReviewsSection = () => {
 	const reviews = [
 		{
 			id: 1,
-			name: 'Сергей',
-			text: 'Долго искали команду для создания корпоративного видеоклипа и наконец нашли! Ребята учли все наши пожелания и предложили другие интересные решения',
+			name: 'Мария Биленко',
+			role: 'руководитель кавер-группы Bombay',
+			text: 'Мы снимаем все большие проекты с Колей и его командой. За эти годы стали одной из лучших групп в России по версии и Wedding Awards, и TOP100. Да, главное — это крутой продукт, но без взаимопонимания с режиссером, без крутого контента это было бы сильно сложнее.',
+			photo: '/images/marma.svg'
 		},
 		{
 			id: 2,
-			name: 'Аня',
-			text: 'Сотрудничество с этой компанией превзошло все мои ожидания! Команда профессионалов быстро поняла наши идеи и реализовала их на высоком уровне',
+			name: 'Женя Малахова',
+			role: 'актриса, экс-солистка группы Reflex',
+			text: 'Мы снимали клип на очень эмоциональный для меня трек. Уже на съемочной площадке поработали с эмоциями в кадре перед каждым мотором, нашли новые смыслы. Ну и эстетика кадра, всё как надо',
+			photo: '/images/malahova.svg'
 		},
 		{
 			id: 3,
-			name: 'Макс',
-			text: 'Обращались к ребятам для создания рекламного видеоклипа. Работа была выполнена в срок, результат нас поразил! Великолепные кадры, отличный звук, яркие спецэффекты. Спасибо вам за качественный подход!',
+			name: 'Владимир Пресняков ',
+			role: 'певец, музыкант, композитор',
+			text: 'Все мои правки и пожелания были услышаны. В части с синхроном понравился визуал, и я решил оставить больше липсинка и вырезать несколько частей клипа. Из особого - съемочные дни подстроили под мой график, минимум времени на площадке.',
+			photo: '/images/persikov.svg'
 		},
 		{
 			id: 4,
-			name: 'Игорь',
-			text: 'Ребята подошли к процессу с творческим настроем и предложили много интересных идей. Итоговое видео получилось просто шикарным!',
+			name: 'Андрей Филатов',
+			role: 'руководитель BSB Production, Music Hunters Band',
+			text: 'Надо было срочно снять что-то для запуска нового коллектива с новыми шоу. За пару дней придумали сценарий, арендовали библиотеку и за 6-7 часов отсняли промо. За полгода эту программу купили уже больше 200 раз!',
+			photo: '/images/filatov.svg'
 		},
 		{
 			id: 5,
-			name: 'Екатерина',
-			text: 'Работа была настоящим удовольствием! Команда профессионалов, которые заботятся о клиентах и их идеях. Видеоклип получился ярким',
+			name: 'DASHAA',
+			role: 'певица',
+			text: 'Кроме написания и исполнения своих песен я сама клипмейкер. Хотелось снять простой и эффектный клип, но быстро и без больших затрат. На съемочной площадке придумывали новые идеи, обменивались мыслями. В общем, хорошо поработали. Клип взяли на МУЗ-ТВ.',
+			photo: '/images/dashaa.svg'
 		},
 		{
 			id: 6,
-			name: 'Дмитрий',
-			text: 'Работали над съемкой видеопрезентации. Остался очень доволен! Быстрая обратная связь, креативный подход, и, что немаловажно, адекватная цена.',
-		},
-		{
-			id: 7,
-			name: 'Сергей',
-			text: 'Долго искали команду для создания корпоративного видеоклипа и наконец нашли! Ребята учли все наши пожелания и предложили другие интересные решения',
-		},
-		{
-			id: 8,
-			name: 'Аня',
-			text: 'Сотрудничество с этой компанией превзошло все мои ожидания! Команда профессионалов быстро поняла наши идеи и реализовала их на высоком уровне',
-		},
-		{
-			id: 9,
-			name: 'Макс',
-			text: 'Обращались к ребятам для создания рекламного видеоклипа. Работа была выполнена в срок, результат нас поразил! Великолепные кадры, отличный звук, яркие спецэффекты. Спасибо вам за качественный подход!',
-		},
-		{
-			id: 10,
-			name: 'Игорь',
-			text: 'Ребята подошли к процессу с творческим настроем и предложили много интересных идей. Итоговое видео получилось просто шикарным!',
-		},
-		{
-			id: 11,
-			name: 'Екатерина',
-			text: 'Работа была настоящим удовольствием! Команда профессионалов, которые заботятся о клиентах и их идеях. Видеоклип получился ярким',
-		},
-		{
-			id: 12,
-			name: 'Дмитрий',
-			text: 'Работали над съемкой видеопрезентации. Остался очень доволен! Быстрая обратная связь, креативный подход, и, что немаловажно, адекватная цена.',
-		},
+			name: 'Катя Рикеда ',
+			role: 'певица',
+			text: 'Я очень рада, что удалось поработать с Колей и его командой. Всё было профессионально, хоть и в ограниченном бюджете. Несколько раз вносили правки, в основном по цвету, чтобы было, как я чувствую. В итоге клип попал на МУЗ-ТВ, победил в шоу Муз Раскрутка.',
+			photo: '/images/rikeda.svg'
+		}
 	]
 
 	useEffect(() => {
@@ -124,8 +106,8 @@ const ReviewsSection = () => {
 										<SwiperSlide
 											key={review.id}
 											style={{
-												width: isMobile ? '90%' : 207,
-												marginRight: '17px',
+												width: isMobile ? '90%' : 440,
+												marginRight: '240px',
 											}}
 										>
 											<div className='client-review-card-wrapper'>
@@ -134,9 +116,17 @@ const ReviewsSection = () => {
 												</div>
 												<div className='client-review-card client-review-card-small'>
 													<div className='client-review-content'>
-														<h3 className='client-review-name'>
-															{review.name}
-														</h3>
+														<div className='client-review-header'>
+															<h3 className='client-review-name'>
+																{review.name}
+															</h3>
+															{review.photo && (
+																<div className='client-review-photo'>
+																	<img src={review.photo} alt={review.name} />
+																</div>
+															)}
+														</div>
+														{review.role && <p className='client-review-role'>{review.role}</p>}
 														<p className='client-review-text'>{review.text}</p>
 													</div>
 												</div>
@@ -149,8 +139,8 @@ const ReviewsSection = () => {
 										<SwiperSlide
 											key={group[2].id}
 											style={{
-												width: isMobile ? '90%' : 321,
-												marginRight: '17px',
+												width: isMobile ? '90%' : 440,
+												marginRight: '240px',
 											}}
 										>
 											<div className='client-review-card-wrapper'>
@@ -159,9 +149,17 @@ const ReviewsSection = () => {
 												</div>
 												<div className='client-review-card client-review-card-large'>
 													<div className='client-review-content'>
-														<h3 className='client-review-name'>
-															{group[2].name}
-														</h3>
+														<div className='client-review-header'>
+															<h3 className='client-review-name'>
+																{group[2].name}
+															</h3>
+															{group[2].photo && (
+																<div className='client-review-photo'>
+																	<img src={group[2].photo} alt={group[2].name} />
+																</div>
+															)}
+														</div>
+														{group[2].role && <p className='client-review-role'>{group[2].role}</p>}
 														<p className='client-review-text'>
 															{group[2].text}
 														</p>
@@ -181,8 +179,8 @@ const ReviewsSection = () => {
 												<SwiperSlide
 													key={review.id}
 													style={{
-														width: isMobile ? '90%' : 207,
-														marginRight: '17px',
+														width: isMobile ? '90%' : 440,
+														marginRight: '240px',
 													}}
 												>
 													<div className='client-review-card-wrapper card-flex-end'>
@@ -191,9 +189,17 @@ const ReviewsSection = () => {
 														</div>
 														<div className='client-review-card client-review-card-small'>
 															<div className='client-review-content'>
-																<h3 className='client-review-name'>
-																	{review.name}
-																</h3>
+																<div className='client-review-header'>
+																	<h3 className='client-review-name'>
+																		{review.name}
+																	</h3>
+																	{review.photo && (
+																		<div className='client-review-photo'>
+																			<img src={review.photo} alt={review.name} />
+																		</div>
+																	)}
+																</div>
+																{review.role && <p className='client-review-role'>{review.role}</p>}
 																<p className='client-review-text'>
 																	{review.text}
 																</p>

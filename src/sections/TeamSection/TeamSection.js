@@ -60,6 +60,11 @@ const TeamSection = () => {
 				className='team-decor-icon bottom-icon'
 				alt=''
 			/>
+			<img
+				src='/images/touch.png'
+				className='team-decor-icon center-icon'
+				alt=''
+			/>
 
 			<div className='container'>
 				<h2 className='team-title'>Наша команда</h2>

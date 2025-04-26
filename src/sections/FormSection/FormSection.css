@@ -298,3 +298,49 @@
   color: #010101;
   transition: all 0.5s ease-in-out;
 }
+
+.checkbox-label {
+  font-family: 'Steppe';
+  font-size: 12px;
+  color: rgba(1,1,1,0.5);
+  cursor: pointer;
+}
+
+.checkbox-label a {
+  color: rgba(1,1,1,0.5);
+  text-decoration: underline;
+}
+
+.checkbox-label input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #010101;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.checkbox-label input[type="checkbox"]:checked {
+  background-color: #010101;
+}
+
+.checkbox-label input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 5px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+@media (max-width: 576px) {
+  .checkbox-label {
+      font-size: 12px;
+  }
+}

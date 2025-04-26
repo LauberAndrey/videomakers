@@ -70,7 +70,7 @@
     position: absolute;
     right: 18%;
     width: 280px;
-    z-index: 3;
+    /* z-index: 3; */
 }
 
 /* Десктопные карточки */

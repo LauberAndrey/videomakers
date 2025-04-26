@@ -1,0 +1,137 @@
+.stages-decor {
+    position: absolute;
+    top: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.decor-line {
+    height: 100%;
+}
+
+.stages-section {
+    color: #FFFCF5;
+    position: relative; /* Для позиционирования декора */
+}
+
+.stages-title {
+    font-family: 'TTTMedium';
+    font-size: 68px;
+    color: #D6FF00;
+    margin-bottom: 90px;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.stages-title-img {
+    vertical-align: middle;
+}
+
+.stages-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 0 auto;
+}
+
+.stage-item {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.stage-item.left {
+    flex-direction: row;
+}
+
+.stage-item.right {
+    align-self: flex-end;
+}
+
+.stage-image {
+    width: 85px;
+    height: 100px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stage-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.stage-content {
+    flex: 1;
+    max-width: calc(100% - 125px);
+}
+
+.stage-header {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+}
+
+.stage-number {
+    font-family: 'TTTBold';
+    color: #D6FF00;
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.stage-title {
+    font-family: 'TTTBold';
+    color: #D6FF00;
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.stage-text {
+    font-family: 'Steppe';
+    color: #FFFCF5;
+    font-size: 16px;
+    line-height: 1.2;
+    margin: 0;
+}
+
+/* Планшет и десктоп */
+@media (max-width: 1260px) {
+    .decor-line{
+        display: none;
+    }
+}
+
+/* Мобильные устройства */
+@media (max-width: 768px) {
+    .stages-title {
+        font-size: 42px;
+        margin-bottom: 40px;
+    }
+
+    .stages-list{
+        align-items: center;
+        justify-content: center;
+    }
+
+    .stage-item {
+        flex-direction: row;
+        gap: 15px;
+        width: 100% !important;
+    }
+
+    .stage-item.right {
+        align-self: center;
+    }
+
+    .stage-content {
+        max-width: 100%;
+    }
+}

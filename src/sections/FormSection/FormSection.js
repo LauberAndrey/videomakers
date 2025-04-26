@@ -8,6 +8,7 @@ const FormSection = forwardRef((props, ref) => {
         artist: '',
         description: ''
     })
+    const [isAgreed, setIsAgreed] = useState(false)
 
     const phoneRef = useRef(null)
 
@@ -85,6 +86,11 @@ const FormSection = forwardRef((props, ref) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         
+        if (!isAgreed) {
+            alert('Пожалуйста, дайте согласие на обработку персональных данных')
+            return
+        }
+        
         const cleanPhone = formData.phone.replace(/\D/g, '')
         const dataToSend = {
             ...formData,
@@ -107,6 +113,7 @@ const FormSection = forwardRef((props, ref) => {
             artist: '',
             description: ''
         })
+        setIsAgreed(false)
     }
 
     const sendMessageToTelegram = async (text) => {
@@ -235,6 +242,29 @@ const FormSection = forwardRef((props, ref) => {
                                 </label>
                             </div>
 
+                            <div className='form-row'>
+                                <label className='checkbox-label' style={{ display: 'flex', alignItems: 'center' }}>
+                                    <input
+                                        type='checkbox'
+                                        checked={isAgreed}
+                                        onChange={(e) => setIsAgreed(e.target.checked)}
+                                        required
+                                        style={{ marginRight: '10px' }}
+                                    />
+                                    <span>
+                                        Я даю согласие на обработку персональных данных в соответствии с{' '}
+                                        <a 
+                                            href="https://docs.yandex.ru/docs/view?url=ya-disk-public%3A%2F%2FPl00vkJoKytI2JKXboIEfIWMvRTgl224Ghv8wKzaq1Qc9jl0Eou8ItV3Eeea%2Firhq%2FJ6bpmRyOJonT3VoXnDag%3D%3D&name=Политика%20конфиденциальности%20персональных%20данных.docx" 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            style={{ textDecoration: 'underline' }}
+                                        >
+                                            Политикой конфиденциальности
+                                        </a>
+                                    </span>
+                                </label>
+                            </div>
+
                             <div className='btn__container form-btn-container' onTouchStart={handleButtonPress}>
                                 <button type='submit' className='consult-btn form-submit-btn'>
                                     Оставить заявку
@@ -251,4 +281,4 @@ const FormSection = forwardRef((props, ref) => {
     )
 })
 
-export default FormSection;
+export default FormSection

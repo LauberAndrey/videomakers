@@ -42,28 +42,28 @@ const FooterSection = ({ scrollRef }) => {
             <div className="footer-right">
               <div className="footer-social">
                 <div className="btn__container social-btn-container" onTouchStart={handleButtonPress}>
-                  <a href="#" className="social-btn">
+                  <a href="https://vk.com/nickvecher#" className="social-btn" target='_blank'>
                     <img src="/images/Telegram App.svg" alt="" className="social-icon" />
                   </a>
                   <div className="social-btn-outline"></div>
                 </div>
                 
                 <div className="btn__container social-btn-container" onTouchStart={handleButtonPress}>
-                  <a href="#" className="social-btn">
+                  <a href="https://vk.com/nickvecher" className="social-btn" target='_blank'>
                     <img src="/images/WhatsApp.svg" alt="" className="social-icon" />
                   </a>
                   <div className="social-btn-outline"></div>
                 </div>
                 
                 <div className="btn__container social-btn-container" onTouchStart={handleButtonPress}>
-                  <a href="#" className="social-btn">
+                  <a href="https://vk.com/nickvecher" className="social-btn" target='_blank'>
                     <img src="/images/VKontakte.svg" alt="" className="social-icon" />
                   </a>
                   <div className="social-btn-outline"></div>
                 </div>
                 
                 <div className="btn__container social-btn-container" onTouchStart={handleButtonPress}>
-                  <a href="#" className="social-btn">
+                  <a href="https://vk.com/nickvecher" className="social-btn" target='_blank'>
                     <img src="/images/social_icon_email.svg" alt="" className="social-icon" />
                   </a>
                   <div className="social-btn-outline"></div>
@@ -78,6 +78,14 @@ const FooterSection = ({ scrollRef }) => {
           
           <div className="footer-copyright">
             <p>2025, Все права защищены</p>
+            <a 
+                href="https://docs.yandex.ru/docs/view?url=ya-disk-public%3A%2F%2FPl00vkJoKytI2JKXboIEfIWMvRTgl224Ghv8wKzaq1Qc9jl0Eou8ItV3Eeea%2Firhq%2FJ6bpmRyOJonT3VoXnDag%3D%3D&name=Политика%20конфиденциальности%20персональных%20данных.docx" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={{ textDecoration: 'underline' }}
+              >
+                Политика конфиденциальности
+              </a>
           </div>
         </div>
       </div>
