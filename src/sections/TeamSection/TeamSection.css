@@ -1,5 +1,6 @@
 .team-section {
     padding: 80px 0 250px 0;
+    position: relative;
 }
 
 .container {
@@ -46,22 +47,22 @@
     flex-shrink: 0;
 }
 
-.photo-placeholder img{
+.photo-placeholder img {
     border-radius: 10px;
     width: 320px;
     height: 320px;
+    object-fit: cover;
 }
 
 .text-content {
     flex: 1;
-    /* padding-right: 200px; */
 }
 
-.text-content__head{
+.text-content__head {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap:wrap ;
+    flex-wrap: wrap;
     column-gap: 20px;
 }
 
@@ -71,7 +72,13 @@
     font-size: 36px;
     margin-bottom: 15px;
     opacity: 0.5;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s, color 0.3s;
+}
+
+/* Hover эффект для имени */
+.team-card:not(.active):hover .member-name {
+    opacity: 1 !important;
+    color: #D6FF00;
 }
 
 .team-card.active .member-name {
@@ -107,10 +114,6 @@
     background: rgba(255, 255, 255, 0.1);
 }
 
-.team-section {
-    position: relative;
-}
-
 .team-decor-icon {
     position: absolute;
     z-index: 1;
@@ -136,30 +139,30 @@
     width: 96px;
 }
 
-@media (max-width: 1355px){
-    .text-content__head{
+@media (max-width: 1355px) {
+    .text-content__head {
         flex-direction: column;
         align-items: start;
     }
 }
 
-@media (max-width: 963px){
+@media (max-width: 963px) {
     .member-name {
         font-size: 26px;
     }
 
-    .member-description{
+    .member-description {
         font-size: 16px;
     }
 }
 
-@media (max-width: 810px){
-    .card-content{
+@media (max-width: 810px) {
+    .card-content {
         padding: 0;
     }
 }
 
-@media (max-width: 680px){
+@media (max-width: 680px) {
     .center-icon {
         right: 40px;
         top: 270px;
@@ -169,13 +172,12 @@
 
 @media (max-width: 768px) {
     .team-card {
-        /* height: auto !important; */
         cursor: default;
         align-items: center;
         justify-content: center;
     }
 
-    .center-icon{
+    .center-icon {
         display: block;
     }
 
@@ -204,6 +206,11 @@
 
     .member-description {
         opacity: 1 !important;
+    }
+
+    /* Отключаем hover на мобильных */
+    .team-card:not(.active):hover .member-name {
+        opacity: 0.5 !important;
     }
 }
 
