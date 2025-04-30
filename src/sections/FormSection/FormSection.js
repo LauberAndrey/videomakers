@@ -1,5 +1,5 @@
-import React, { forwardRef, useState, useRef } from 'react'
-import './FormSection.css'
+import React, { forwardRef, useState, useRef, useEffect } from 'react';
+import './FormSection.css';
 
 const FormSection = forwardRef((props, ref) => {
     const [formData, setFormData] = useState({
@@ -7,8 +7,21 @@ const FormSection = forwardRef((props, ref) => {
         phone: '',
         artist: '',
         description: ''
-    })
-    const [isAgreed, setIsAgreed] = useState(false)
+    });
+    const [isAgreed, setIsAgreed] = useState(false);
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+    useEffect(() => {
+        if (showSuccessModal) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'visible';
+        }
+
+        return () => {
+            document.body.style.overflow = 'visible';
+        };
+    }, [showSuccessModal]);
 
     const phoneRef = useRef(null)
 
@@ -107,6 +120,7 @@ const FormSection = forwardRef((props, ref) => {
             Группа/артист: ${dataToSend.artist}`
         )
 
+        setShowSuccessModal(true)
         setFormData({
             name: '',
             phone: '',
@@ -149,6 +163,12 @@ const FormSection = forwardRef((props, ref) => {
             }, 300)
         }
     }
+
+    const handleModalClose = (e) => {
+        if (e.target === e.currentTarget || e.target.classList.contains('success-modal-close')) {
+            setShowSuccessModal(false);
+        }
+    };
 
     return (
         <section id='consultation-form' className='wrapper-img discuss-form-section' ref={ref}>
@@ -277,6 +297,25 @@ const FormSection = forwardRef((props, ref) => {
                     </div>
                 </div>
             </div>
+            {showSuccessModal && (
+                <div className="success-modal-overlay" onClick={handleModalClose}>
+                    <div className="success-modal">
+                        <div className="success-modal-image-placeholder">
+                            <img className='modal-icon' src='/images/modal-icon.svg' />
+                        </div>
+                        <h2 className="success-modal-title">Заявка успешно отправлена</h2>
+                        <p className="success-modal-text">
+                            Мы свяжемся с Вами в ближайшее время для уточнения всех деталей
+                        </p>
+                        <button 
+                            className="success-modal-close"
+                            onClick={handleModalClose}
+                        >
+                            ×
+                        </button>
+                    </div>
+                </div>
+            )}
         </section>
     )
 })
