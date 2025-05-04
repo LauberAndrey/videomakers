@@ -20,28 +20,28 @@ const ContentSection = () => {
 
 	const cards = useMemo(() => [
 		{
-			problem: 'Комплексный подход',
-			solution: 'С каждой съемки - не только клип, но и вертикальный контент, бэкстейдж, фото для афиши, рилсы - всё включено в большинстве проектов',
+			problem: 'Хорошие клипы стоят миллионы',
+			solution: 'Бюджет клипов должен развиваться с гонораром артиста: пока бюджет не позволяет снимать масштабные работы, надо чаще снимать небольшие, но стильные клипы с минимальной командой и застройкой: раскрыть трек в визуале поможет наша команда, а режиссёр во время съемки - раскрыть артиста в кадре.',
 			bgClose: 'bg-card-close1',
 		},
 		{
-			problem: 'Топ-контент',
-			solution: 'Не хуже, чем у метров индустрии, но экономнее',
+			problem: 'У нас офигенные клипы, но сниппеты, рилсы, шортсы и афиши - совсем не то',
+			solution: 'У нас есть пакет услуг, в котором вы получаете много контента для соц сетей и будущих афиш прямо со съемочной площадки, в таком же качестве, от той же команды, а не от сторонних специалистов, которых вы приглашаете, которые в 99% случаев не в теме особенностей декораций, ракурсов и света. ',
 			bgClose: 'bg-card-close2',
 		},
 		{
-			problem: 'Мало подписчиков',
-			solution: 'Видео, которое привлекает новых фанатов',
+			problem: 'Недостаточно приглашений на частные мероприятия, от агентств',
+			solution: 'Для попадания в ивент-обоему и для известных артистов и для начинающих нужен особенный продукт и особенное видео - промо, которое за 2-3 минуты расскажет о целой программе. В добавок к съемке промо мы предлагаем рекомендации по продвижению в ивент-сфере от наших друзей - топовых агентств и ивент-артистов. ',
 			bgClose: 'bg-card-close3',
 		},
 		{
-			problem: 'Точно в цель',
-			solution: 'Вникаем в целевую аудиторию, анализируем треки и выжимаем максимум результата из бюджета',
+			problem: 'Заказываем клипы, хорошие, красивые, но толку нет',
+			solution: 'Каждой целевой аудитории - свой подход. Мы проанализируем вашу целевую аудиторию, сопоставим с треком и предложим несколько вариантов идей, которые будут отвечать и слушателю, и внутреннему миру артиста, и треку. А, может быть, дело просто в несоответствии подхода к созданию клипа и методов его продвижения. В любом случае, мы поможем разобраться.',
 			bgClose: 'bg-card-close4',
 		},
 		{
-			problem: 'Разумная цена',
-			solution: 'Большой опыт, но мы ещё не успели охренеть',
+			problem: 'Сняли клип, а он какой-то не музыкальный, там же куплет в 4/4, а припев в 2/4',
+			solution: 'Снимайте клипы у нас - в нашей команде люди с музыкальным образованием по фортепиано, вокалу, опытом сотен концертов на больших сценах и даже Государственном Кремлёвском Дворце. Мы говорим с вами на одном языке.',
 			bgClose: 'bg-card-close5',
 		},
 	], [])
@@ -111,12 +111,13 @@ const ContentSection = () => {
 									>
 										<div
 											className={`content-mobile-card ${activeIndex === index ? 'content-active' : ''}`}
-											style={{ backgroundImage: 'url(/images/bg-card-open.jpg)' }}
+											// style={{ backgroundImage: 'url(/images/bg-card-open.jpg)' }}
+											style={{ background: '#fff' }}
 										>
 											<div className='content-mobile-card-content'>
-												{/* <h3 className='content-card-problem-title'>Проблема</h3> */}
+												<h3 className='content-card-problem-title'>Проблема</h3>
 												<p className='content-card-text'>{card.problem}</p>
-												{/* <h3 className='content-card-decision-title'>Решение</h3> */}
+												<h3 className='content-card-decision-title'>Решение</h3>
 												<p className='content-card-text content-solution'>{card.solution}</p>
 											</div>
 											<span className='content-card-count'>{`0${index + 1}`}</span>
@@ -145,12 +146,13 @@ const ContentSection = () => {
 										/>
 										<div
 											className='content-card-back'
-											style={{ backgroundImage: 'url(/images/bg-card-open.jpg)' }}
+											// style={{ backgroundImage: 'url(/images/bg-card-open.jpg)' }}
+											style={{ background: '#fff' }}
 										>
 											<div className='content-card-content'>
-												{/* <h3 className='content-card-problem-title'>Проблема</h3> */}
+												<h3 className='content-card-problem-title'>Проблема</h3>
 												<p className='content-card-text'>{card.problem}</p>
-												{/* <h3 className='content-card-decision-title'>Решение</h3> */}
+												<h3 className='content-card-decision-title'>Решение</h3>
 												<p className='content-card-text content-solution'>{card.solution}</p>
 											</div>
 											<span className='content-card-count'>{`0${index + 1}`}</span>

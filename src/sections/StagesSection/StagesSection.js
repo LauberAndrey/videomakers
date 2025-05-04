@@ -23,7 +23,7 @@ const StagesSection = () => {
         },
         {
             number: '4',
-            title: 'Смета и тритиент',
+            title: 'Смета и тримиент',
             text: 'Согласовываем бюджет и прорабатываем выбранную идею',
             image: '/images/stage4.svg'
         },

@@ -11,9 +11,10 @@
 
 .content__section {
     position: relative;
-    padding: 100px 56px;
+    /* padding: 100px 56px; */
     min-height: 600px;
 }
+
 
 .content__container {
     text-align: center;
@@ -78,6 +79,7 @@
     display: flex;
     justify-content: center;
     gap: 20px;
+    flex-wrap: wrap; /* Добавили перенос карточек при нехватке места */
     margin-top: 80px;
     position: relative;
     z-index: 2;
@@ -86,7 +88,7 @@
 
 .content-card {
     width: 220px;
-    height: 580px;
+    height: 650px;
     perspective: 1200px;
     cursor: pointer;
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -97,6 +99,7 @@
 
 .content-card.content-active {
     width: 440px;
+    /* width: 790px; */
 }
 
 .content-card-front,
@@ -238,16 +241,16 @@
 
 .content-card-text {
     font-family: "Steppe", sans-serif;
-    font-size: 28px;
+    font-size: 18px;
     line-height: 1.4;
     color: #020202;
-    padding-bottom: 45px;
+    padding-bottom: 20px;
     font-weight: 700;
 }
 
 .content-card-text.content-solution {
     color: #000;
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 400;
 }
 
@@ -262,7 +265,7 @@
     
     .content-card {
         width: 200px;
-        height: 580px;
+        /* height: 580px; */
     }
 }
 
@@ -286,6 +289,11 @@
         height: 690px !important;
         /* width: 440px !important; */
     }
+
+    .content-card-text {
+        font-size: 18px !important;
+        padding-bottom: 30px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -305,7 +313,7 @@
     }
 
     .content-card-text {
-        font-size: 18px;
+        font-size: 18px !important;
         padding-bottom: 30px;
     }
 
@@ -342,7 +350,7 @@
     .content-mobile-slide {
         width: calc(32% - 18px) !important;
         min-width: calc(90% - -3px) !important;
-        height: 490px !important;
+        height: 790px !important;
     }
 
     .content-card-count {
