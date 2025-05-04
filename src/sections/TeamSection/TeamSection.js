@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import './TeamSection.css'
 
 const TeamSection = () => {
-	const [activeIndex, setActiveIndex] = useState(0) // Первая карточка активна по умолчанию
+	const [activeIndex, setActiveIndex] = useState(0)
+	const cardRefs = useRef([])
+	const [heights, setHeights] = useState([])
 
 	const teamMembers = [
 		{
@@ -48,6 +50,24 @@ const TeamSection = () => {
 		},
 	]
 
+	useEffect(() => {
+		const updateHeights = () => {
+			const newHeights = cardRefs.current.map((ref) => {
+				if (!ref) return { collapsed: 120, expanded: 355 }
+				const content = ref.querySelector('.card-content')
+				return {
+					collapsed: 120,
+					expanded: content.scrollHeight + 40,
+				}
+			})
+			setHeights(newHeights)
+		}
+
+		updateHeights()
+		window.addEventListener('resize', updateHeights)
+		return () => window.removeEventListener('resize', updateHeights)
+	}, [])
+
 	return (
 		<section className='wrapper-img team-section' id='team-section'>
 			<img
@@ -70,34 +90,46 @@ const TeamSection = () => {
 				<h2 className='team-title'>Наша команда</h2>
 
 				<div className='team-column'>
-					{teamMembers.map((member, index) => (
-						<div
-							className={`team-card ${activeIndex === index ? 'active' : ''}`}
-							key={index}
-							onClick={() => setActiveIndex(index)}
-						>
-							<div className='card-content'>
-								<div className='photo-placeholder'>
-									<img src={member.photo} alt={member.name} />
-								</div>
+					{teamMembers.map((member, index) => {
+						const currentHeight =
+							activeIndex === index
+								? heights[index]?.expanded || 355
+								: heights[index]?.collapsed || 120
 
-								<div className='text-content'>
-									<div className='text-content__head'>
-										<h3 className='member-name'>{member.name}</h3>
-										<p className='member-role'>{member.role}</p>
+						return (
+							<div
+								ref={(el) => (cardRefs.current[index] = el)}
+								className={`team-card ${activeIndex === index ? 'active' : ''}`}
+								key={index}
+								onClick={() => setActiveIndex(index)}
+								style={{
+									height: `${currentHeight}px`,
+									marginBottom: '20px',
+								}}
+							>
+								<div className='card-content'>
+									<div className='photo-placeholder'>
+										<img src={member.photo} alt={member.name} />
 									</div>
-									<div
-										className={`member-description ${
-											activeIndex === index ? 'visible' : ''
-										}`}
-									>
-										{member.description}
+
+									<div className='text-content'>
+										<div className='text-content__head'>
+											<h3 className='member-name'>{member.name}</h3>
+											<p className='member-role'>{member.role}</p>
+										</div>
+										<div
+											className={`member-description ${
+												activeIndex === index ? 'visible' : ''
+											}`}
+										>
+											{member.description}
+										</div>
 									</div>
 								</div>
+								<div className='separator-line' />
 							</div>
-							<div className='separator-line' />
-						</div>
-					))}
+						)
+					})}
 				</div>
 			</div>
 		</section>

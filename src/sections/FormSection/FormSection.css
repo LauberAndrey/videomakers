@@ -202,9 +202,9 @@
 }
 
 @media (max-width: 768px) {
-  .discuss-form-section {
+  /* .discuss-form-section {
     padding: 0 0 60px 0;
-  }
+  } */
 
   .discussc-ontainer {
     padding: 0 30px;

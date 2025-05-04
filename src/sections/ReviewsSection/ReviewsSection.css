@@ -1,5 +1,5 @@
 .client-reviews-section {
-    padding-top: 100px;
+    /* padding-top: 100px; */
     position: relative;
     overflow: hidden;
 }
@@ -184,9 +184,9 @@
 }
 
 @media (max-width: 1200px) {
-    .client-reviews-bg {
+    /* .client-reviews-bg {
         padding: 100px 0 0;
-    }
+    } */
 
     .client-reviews-title {
         font-size: 48px;
@@ -206,6 +206,10 @@
     .client-review-card-small,
     .client-review-card-large {
         width: 100% !important;
+    }
+
+    .client-reviews-bg {
+        padding-top: 50px;
     }
 }
 
@@ -350,6 +354,15 @@
 }
 
 @media (max-width: 400px) {
+    .client-review-header{
+        flex-direction: column-reverse;
+        gap: 5px;
+    }
+
+    .client-review-photo{
+        margin-left: 0;
+    }
+
     .client-reviews-title {
         font-size: 24px;
     }

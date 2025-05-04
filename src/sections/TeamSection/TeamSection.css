@@ -1,13 +1,14 @@
+/* TeamSection.css */
 .team-section {
     padding: 80px 0 250px 0;
     position: relative;
 }
 
-.container {
+/* .container {
     max-width: 1440px;
     margin: 0 auto;
     padding: 0 20px;
-}
+} */
 
 .team-title {
     font-family: 'TTTMedium';
@@ -20,19 +21,15 @@
 .team-column {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
 }
 
 .team-card {
-    height: 120px;
     overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     position: relative;
-}
-
-.team-card.active {
-    height: 355px;
+    padding-bottom: 20px;
 }
 
 .card-content {
@@ -75,7 +72,6 @@
     transition: opacity 0.3s, color 0.3s;
 }
 
-/* Hover эффект для имени */
 .team-card:not(.active):hover .member-name {
     opacity: 1 !important;
     color: #D6FF00;
