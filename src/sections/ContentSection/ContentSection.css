@@ -11,7 +11,7 @@
 
 .content__section {
     position: relative;
-    /* padding: 100px 56px; */
+    padding: 100px 56px;
     min-height: 600px;
 }
 
