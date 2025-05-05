@@ -131,8 +131,8 @@ const FormSection = forwardRef((props, ref) => {
     }
 
     const sendMessageToTelegram = async (text) => {
-        const chatId = 761929046;
-        const url = `https://api.telegram.org/bot7634072014:AAFx8TWuw4vkQoSe66bpmrnfAbeYe8HqlDs/sendMessage`;
+        const chatId = 706078471;
+        const url = `https://api.telegram.org/bot8173229377:AAHDieQg5tlHwAu1sMCE0ExIx8i6OqBq_xg/sendMessage`;
         const message = {
             chat_id: chatId,
             text: text,
