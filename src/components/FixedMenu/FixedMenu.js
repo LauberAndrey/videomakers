@@ -27,7 +27,7 @@ const FixedMenu = () => {
             <div className='menu__phone-wrapper'>
               <a href='tel:+79897720272' className='menu__phone-link'>
                 <img src="/images/Phone.png" alt="Телефон" className='menu__phone-icon' />
-                <span className='menu__phone-number'>+7 (989) 772-02-72</span>
+                <span className='menu__phone-number'>+7 (915) 142-11-13</span>
               </a>
             </div>
 
