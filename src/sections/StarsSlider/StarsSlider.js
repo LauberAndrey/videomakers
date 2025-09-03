@@ -22,21 +22,21 @@ const StarsSlider = () => {
         {
             id: 1,
             image: '/images/image89.jpg',
-            videoSrc: '/video/Music_Hunters_Band.mp4',
+            videoSrc: '/video/music-hunters-band.mp4',
             name: 'MUSIC HUNTERS BAND',
             text: 'В библиотеке шуметь что? Правильно – нельзя! Промо-сниппет для духового коллектива.',
         },
         {
             id: 2,
             image: 'images/image87.svg',
-            videoSrc: '/video/Bombey.mp4',
+            videoSrc: '/video/bombey.mp4',
             name: 'BOMBEY',
             text: 'Впервые в мире. Первая кавер-рок-хор-оркестра live программа, концептуально созданная и спродюсированная Николаем Вечерским. Презентация в виде промо.',
         },
         {
             id: 3,
             image: 'images/image93.svg',
-            videoSrc: '/video/Пресняков.mp4',
+            videoSrc: '/video/presnyakov.mp4',
             name: 'Владимир Пресняков',
             text: 'Клип на песню Владимира Преснякова «Небо». Миллион вариаций и только один релиз.',
         },
@@ -57,7 +57,7 @@ const StarsSlider = () => {
         {
             id: 4,
             image: '/images/image91.svg',
-            videoSrc: '/video/Рикеда.mp4',
+            videoSrc: '/video/rikeda.mp4',
             name: 'Катя Рикеда',
             text: 'Клип для автора и исполнителя песен Катя Рикеда. Дебютная работа была приглашена на МУЗ-ТВ, победила в выпуске шоу «Муз раскрутка» и скоро попадёт в ротацию.',
         },
@@ -71,7 +71,7 @@ const StarsSlider = () => {
         {
             id: 6,
             image: '/images/image103.svg',
-            videoSrc: '/video/Малахова.mp4',
+            videoSrc: '/video/malakhova.mp4',
             name: 'Женя Малахова',
             text: 'Клип на песню Жени Малаховой «Ничего не обещал». Снят для продакшна Mag Film Алексея Голубева.',
         },
